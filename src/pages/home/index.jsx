@@ -28,7 +28,7 @@ export default function Main() {
 
     const [selectedTags, setSelectedTags] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
-    const [listView, setListView] = useState(true);
+    const [listView, setListView] = useState(false);
     const [allCards, setAllCards] = useState([]);
     const [cards, setCards] = useState([]);
 
@@ -250,7 +250,7 @@ export default function Main() {
                         </div>
                     </div>
                     <div className="adv-space">
-                        Advertising Space
+                        <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/pro_seagrass.png" alt="ad" width='100%' />
                     </div>
                 </div>
             </section>
@@ -313,11 +313,10 @@ export default function Main() {
                 }
             </section>
 
-            <section className="container mt-3 pb-2">
-                <div className="adv-space">
-                    Advertising Space
-                </div>
+            <section className="container mt-3 mb-4 pb-2">
+                <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/sehtafooter.png" alt="shetha ad" width='100%' />
             </section>
+            <div className="my-4"></div>
         </main>
     )
 }

@@ -82,6 +82,10 @@ div#form-tabs .section-title {
     margin-bottom: 1.4rem;
 }
 
+div#form-tabs #nav-basic .q-hold input::placeholder {
+    color: #fff;
+}
+
 div#form-tabs .q-grid {
     row-gap: 1.3rem;
 }

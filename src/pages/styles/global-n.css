@@ -248,6 +248,9 @@ a {
 .know-form form input:not([type="submit"]) {
     background-color: rgba(13, 155, 156, 0.15);
 }
+.know-form form input:not([type="submit"])::placeholder {
+    color: #fff;
+}
 .know-form form input[type="submit"] {
     background-color: #059b9a;
     font-weight: 600;

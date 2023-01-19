@@ -215,9 +215,16 @@ section.cards {
     column-gap: 1.5rem;
 }
 
-.cards.grid .card .brand-n-title {
-    height: 80px;
+@media (min-width: 385px) {
+    .cards.grid .card .brand-n-title {
+        height: 80px;
+    }    
 }
+
+@media (max-width: 384.98px) {
+    
+}
+
 .cards .card .brand-n-title .fsxl36 {
     font-size: 30px;
 }
@@ -457,6 +464,7 @@ section.not-got .not-got-dots {
         overflow: hidden;
     }
     section.what .content-form .content{
+        width: 100vw;
         padding-left: 0.3rem;
         padding-right: 0.3rem;
     }
@@ -479,6 +487,9 @@ section.not-got .not-got-dots {
     }
     .cards.tile .brand-n-title {
         width: 60%;
+    }
+    section.what .content-form .plug-content {
+        width: 95vw;
     }
 }
 
