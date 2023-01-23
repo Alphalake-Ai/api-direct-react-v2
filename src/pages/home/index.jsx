@@ -250,7 +250,9 @@ export default function Main() {
                         </div>
                     </div>
                     <div className="adv-space">
-                        <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/pro_seagrass.png" alt="ad" width='100%' />
+                        <a href="https://www.projectseagrass.org/" target='_blank' rel='noreferrer'>
+                            <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/pro_seagrass.png" alt="ad" width='100%' />
+                        </a>
                     </div>
                 </div>
             </section>
@@ -314,7 +316,9 @@ export default function Main() {
             </section>
 
             <section className="container mt-3 mb-4 pb-2">
-                <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/sehtafooter.png" alt="shetha ad" width='100%' />
+                <a href="https://sehta.co.uk/" target='_blank' rel='noreferrer'>
+                    <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/sehtafooter.png" alt="shetha ad" width='100%' />
+                </a>
             </section>
             <div className="my-4"></div>
         </main>
