@@ -2,3 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/umesh/public_html/
+    - /bin/cd $DEPLOYPATH
+    - /opt/cpanel/ea-nodejs16/bin/npm install
+    - /opt/cpanel/ea-nodejs16/bin/npm run build
+    - /bin/cp -R build $DEPLOYPATH
