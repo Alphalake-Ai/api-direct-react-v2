@@ -151,6 +151,17 @@ export function PrimaryCare() {
     )
 }
 
+
+export function Locator() {
+    return (
+        <div className="text-tag">
+            <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/api-connect-images/Primary-Care-icon.png" />
+            <div className="tag-text">Locator</div>
+        </div>
+    )
+}
+
+
 export function Mobile() {
     return (
         <div className="text-tag">
@@ -178,6 +189,15 @@ export function CommunityCare() {
     )
 }
 
+export function ChildHealth() {
+    return (
+        <div className="text-tag">
+            <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/api-connect-images/Community-Care-icon.png" />
+            <div className="tag-text">Child Health</div>
+        </div>
+    )
+}
+
 export function Medicare() {
     return (
         <div className="text-tag">
@@ -192,6 +212,15 @@ export function MedicalImaging() {
         <div className="text-tag">
             <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/API%20Direct%20Logo/MedicalImagings.png" />
             <div className="tag-text">Medical Imaging</div>
+        </div>
+    )
+}
+
+export function CareRecord() {
+    return (
+        <div className="text-tag">
+            <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/API%20Direct%20Logo/MedicalImagings.png" />
+            <div className="tag-text">Care Record</div>
         </div>
     )
 }
@@ -214,6 +243,15 @@ export function Fitness() {
     )
 }
 
+export function Medicene() {
+    return (
+        <div className="text-tag">
+            <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/API%20Direct%20Logo/fitness.png" />
+            <div className="tag-text">Medicene</div>
+        </div>
+    )
+}
+
 export function DataAnalytics() {
     return (
         <div className="text-tag">
@@ -222,6 +260,16 @@ export function DataAnalytics() {
         </div>
     )
 }
+
+export function Reviews() {
+    return (
+        <div className="text-tag">
+            <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/Data-Analytics-logo-1.svg" />
+            <div className="tag-text">Reviews</div>
+        </div>
+    )
+}
+
 
 export function Telehealth() {
     return (
@@ -232,11 +280,39 @@ export function Telehealth() {
     )
 }
 
+export function HealthData() {
+    return (
+        <div className="text-tag">
+            <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/API%20Direct%20Logo/telehealth.png" />
+            <div className="tag-text">Health Data</div>
+        </div>
+    )
+}
+
+export function MentalHealth() {
+    return (
+        <div className="text-tag">
+            <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/API%20Direct%20Logo/telehealth.png" />
+            <div className="tag-text">Mental Health</div>
+        </div>
+    )
+}
+
+
 export function Appointment() {
     return (
         <div className="text-tag">
             <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/API%20Direct%20Logo/appointment.png" />
             <div className="tag-text">Appointment</div>
+        </div>
+    )
+}
+
+export function Reference() {
+    return (
+        <div className="text-tag">
+            <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/API%20Direct%20Logo/appointment.png" />
+            <div className="tag-text">Reference</div>
         </div>
     )
 }
@@ -268,6 +344,23 @@ export function Research() {
     )
 }
 
+export function SocialCare() {
+    return (
+        <div className="text-tag">
+            <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/API%20Direct%20Logo/research.png" />
+            <div className="tag-text">Social Care</div>
+        </div>
+    )
+}
+
+export function Spine() {
+    return (
+        <div className="text-tag">
+            <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/API%20Direct%20Logo/metadata.png" />
+            <div className="tag-text">Spine</div>
+        </div>
+    )
+}
 
 
 export default function TextTagRenderer({ tag }) {
@@ -285,6 +378,7 @@ export default function TextTagRenderer({ tag }) {
         case "INTEGRATEDCARE": return <IntegratedCares />;
         case "NATIONALSYSTEM": return <NationalSystems />;
         case "NATIONAL-SYSTEM": return <NationalSystems />;
+        case "NATIONAL SYSTEM": return <NationalSystems />;
         case "NATIONALSYSTEMS": return <NationalSystems />;
         case "NATIONAL-SYSTEMS": return <NationalSystems />;
         case "APP": return <App />;
@@ -310,6 +404,16 @@ export default function TextTagRenderer({ tag }) {
         case "PHARMACY": return <Pharmacy/>;
         case "METADATA": return <Metadata/>;
         case "RESEARCH": return <Research/>;
+        case "SOCIAL CARE": return <SocialCare/>;
+        case "SPINE": return <Spine/>;
+        case "MEDICENE": return <Medicene/>;
+        case "REFERENCE": return <Reference/>;
+        case "HEALTH DATA": return <HealthData/>;
+        case "MENTAL HEALTH": return <MentalHealth/>;
+        case "REVIEWS": return <Reviews/>;
+        case "LOCATOR": return <Locator/>;
+        case "CARE RECORD": return <CareRecord/>;
+        case "CHILD HEALTH": return <ChildHealth/>;
         default: return <></>;
     }
 }
