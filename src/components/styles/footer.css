@@ -1,0 +1,61 @@
+section.contact {
+    margin-top: 3rem;
+    background-image: url('https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/ReactApiImg/details-hero-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
+section.contact .address-hold {
+    padding-left: 5rem;
+}
+
+form.subscription-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 580px;
+}
+form.subscription-form .d-flex label.fsxl20 {
+    width: 10rem;
+}
+form.subscription-form .d-flex label.check-label {
+    font-size: 16px;
+    line-height: 150%;
+}
+form.subscription-form input.field {
+    background-color: var(--primary-3-25);
+    outline: none;
+    border: 1px solid transparent;
+    width: 315px;
+    color: #fff;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    border-radius: 5px;
+}
+form.subscription-form input:focus {
+    border: 1px solid var(--primary-3);
+}
+input[type="checkbox"] {
+  cursor: pointer;
+  transform: translateY(2px);
+  width: 15px;
+  height: 15px;
+}
+
+section.social {
+    background: #000B0E;
+    padding-top: 5rem;
+    padding-bottom: 7rem;
+}
+
+section.social .container {
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 1.5rem;
+}

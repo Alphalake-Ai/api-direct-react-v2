@@ -15,9 +15,9 @@ const tags = [
 ]
 
 
-function matchAtleastOne (arr1 = [], arr2 = []) {
+function matchAtleastOne(arr1 = [], arr2 = []) {
     for (let index = 0; index < arr1.length; index++) {
-        if (arr2.includes(arr1[index])){
+        if (arr2.includes(arr1[index])) {
             return true;
         }
     }
@@ -32,7 +32,7 @@ export default function Main() {
     const [allCards, setAllCards] = useState([]);
     const [cards, setCards] = useState([]);
 
-    async function onSearchFormSubmit (e) {
+    async function onSearchFormSubmit(e) {
         e?.preventDefault();
         try {
             const { data } = await axios.get(baseUrl + `/api-cards?q=${searchQuery}&tags=${selectedTags.join(",")}`);
@@ -43,10 +43,10 @@ export default function Main() {
         }
     }
 
-    useEffect(() => {onSearchFormSubmit()}, []);
+    useEffect(() => { onSearchFormSubmit() }, []);
 
     useEffect(() => {
-        if(searchQuery) {
+        if (searchQuery) {
             let regex = new RegExp(searchQuery, 'i');
             let temp = allCards.filter(c => regex.test(c.name));
             setCards(temp);
@@ -56,7 +56,7 @@ export default function Main() {
         // onSearchFormSubmit();
     }, [searchQuery])
 
-    function onSearchQueryChange (e) {
+    function onSearchQueryChange(e) {
         setSearchQuery(e.target.value);
     }
 
@@ -69,7 +69,7 @@ export default function Main() {
     }
 
     useEffect(() => {
-        if(selectedTags.length) {
+        if (selectedTags.length) {
             let temp = allCards.filter(c => matchAtleastOne(c.textTags, selectedTags));
             setCards(temp);
         } else {
@@ -108,20 +108,20 @@ export default function Main() {
 
     const [infoForm, setInfoForm] = useState({ email: "", name: "" });
     const [buildForm, setBuildForm] = useState({ email: "", name: "" });
-    function onInfoFormChange ({target}) {
+    function onInfoFormChange({ target }) {
         const { name, value } = target;
-        setInfoForm(prev => ({...prev, [name]: value}))
+        setInfoForm(prev => ({ ...prev, [name]: value }))
     }
 
-    function onBuildFormChange ({target}) {
+    function onBuildFormChange({ target }) {
         const { name, value } = target;
-        setBuildForm(prev => ({...prev, [name]: value}))
+        setBuildForm(prev => ({ ...prev, [name]: value }))
     }
 
-    async function onInfoFormSubmit (e) {
+    async function onInfoFormSubmit(e) {
         try {
             e.preventDefault();
-            await axios.post(baseUrl+'/info', infoForm);
+            await axios.post(baseUrl + '/info', infoForm);
             alert("Thanks for the help. We'll contact you soon.");
         } catch (error) {
             console.log(error);
@@ -129,10 +129,10 @@ export default function Main() {
         }
     }
 
-    async function onBuildFormSubmit (e) {
+    async function onBuildFormSubmit(e) {
         try {
             e.preventDefault();
-            await axios.post(baseUrl+'/build', buildForm);
+            await axios.post(baseUrl + '/build', buildForm);
             alert("Build request registered. We'll contact you soon.");
         } catch (error) {
             console.log(error);
@@ -142,122 +142,120 @@ export default function Main() {
 
     return (
         <main id="home">
-            <section className="cdh hero py-3">
-                <div className="container-fluid px-0 d-flex">
-                    <div className="d-flex py-4 my-auto w-100">
-                        <div className="l-bg d-flex">
-                            <div className="my-auto">
-                                <h1 className="fsxl96 fw-600 text-white">
-                                    Welcome to <br /> APIdirect
-                                </h1>
-                                <br />
-                                <h3 className="fsxl32 fw-600 text-primary-3">
-                                    The world's first Healthcare API library.
-                                </h3>
-                            </div>
-                        </div>
-                        <div className="r-bg d-flex">
-                            <div className="my-auto">
-                                <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/ReactApiImg/hero-bot.png" alt="bg-imge" width="90%" />
-                            </div>
-                        </div>
-                    </div>
+            <section className="cdh hero d-flex flex-column py-3">
+                <div className="my-auto container font-mont my-auto">
+                    <h1 className="fsxl72 fw-600 text-white">
+                        The world's first <br /> Healthcare API library.
+                    </h1>
+                    <br />
+                    <h3 className="fsxl40 fw-600 text-primary-3">
+                        For Healthcare Innovators.
+                    </h3>
                 </div>
                 <div className="text-center text-white browse">
-                    <h4 className="fsxl24" style={{ cursor: "pointer" }} onClick={executeScroll}>Browse our API Library <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-down-short" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z" />
-                    </svg> </h4>
+                    <Link to='library'>
+                        <h4 className="fsxl24 font-mont">
+                            Browse our API Library 
+                            <span style={{ marginLeft: '2rem' }}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </span>
+                        </h4>
+                    </Link>
                 </div>
             </section>
 
-            <section className="cdh center what">
-                <div className="container">
-                    <div className="text-center font-mont text-white">
-                        <h3 className="fsxl32 fw-600">What is APIdirect ?</h3>
+            <section className="what py-4 my-4">
+                <div className="container py-4">
+                    <h5 className="fsxl-l16 font-lucida text-primary-3">
+                        What is APIdirect?
+                    </h5>
+                    <br />
+                    <div className="d-flex justify-content-between">
+                        <div className='what-title'>
+                            <span className="font-mont fsxl48 fw-600 text-white">
+                                Discover what's possible with APIdirect.
+                            </span>
+                        </div>
+                        <div className='what-desc d-flex flex-column py-3'>
+                            <span className="fsxl-l16 font-lucida text-white">
+                                The library serves as a <span style={{ color: "#F8B225" }}>FREE</span> knowledge base for the digital health
+                                tech community to access simplified information on API’s that exist
+                                across the health and care ecosystem.
+                            </span>
+
+                            <Link to='library' className="start-browsing mt-auto">
+                                <span className="font-mont fsxl20 fw-600">Start Browsing</span>
+                            </Link>
+                        </div>
                     </div>
-                    <div className="content-form d-flex justify-content-around flex-wrap">
-                        <div className="content">
-                            <h5 className="fsxl24 font-mont">
-                                The library serves as a <span style={{ color: "#F8B225" }}>FREE</span> knowledge base for the
-                                digital health tech community to access simplified
-                                information on API’s that exist across the health
-                                and care ecosystem.
-                            </h5>
+                </div>
+            </section>
+
+            <section className="py-4 my-4 probably-ads">
+                <div className="container d-flex justify-content-between">
+                    <div className="ad-cards">
+
+                    </div>
+                    <div className="ad-card-right">
+                        <p className="font-lucida text-white fsxl-l16">
+                            Private and open APIs can be searched or browsed
+                            as both traditional APIs and modern no-code Connectors.
+                            Each API contains a simplified summary of the data endpoints
+                            available. The library can also be used to quickly obtain
+                            available FHIR resources.
                             <br />
-                            <div className="d-flex bot-n-content">
-                                <div className="plug-bot-img-hold">
-                                    <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/ReactApiImg/plug-bot.png" alt="alphabot plug" />
-                                </div>
-                                <div className="font-lucida plug-content text-white">
-                                    <p className="fsxl-l16">
-                                        Private and open APIs can be searched or browsed as both traditional
-                                        APIs and modern no-code Connectors. Each API contains a simplified
-                                        summary of the data endpoints available. The library can also be used
-                                        to quickly obtain available FHIR resources.
-                                    </p>
-                                    <p className="fsxl-l16">
-                                        Where a No-Code Connector exists for an API to offer plug
-                                        and play interoperability and improved automation, this is
-                                        displayed along with the API’s key information and capability.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form-hold">
-                            <div className="know-form font-mont">
-                                <div>
-                                    <h5 className="fsxl20 text-white  fw-600">Like what you see ?</h5>
-                                    <p className="fsxl-m14 text-white my-4">
-                                        Do you see an API that you think will
-                                        be beneficial to your organisation?
-                                        Fill out the form below and we will
-                                        be in touch soon!
-                                    </p>
-                                </div>
-                                <form onSubmit={onInfoFormSubmit}>
-                                    <input type="text" name="name" value={infoForm.name} onChange={onInfoFormChange} placeholder="Firstname Surname" />
-                                    <input type="email" name="email" value={infoForm.email} onChange={onInfoFormChange} placeholder="Work Email" />
-                                    <input type="submit" value="Submit" />
-                                </form>
-                            </div>
-                        </div>
+                            <br />
+                            Where a No-Code Connector exists
+                            for an API to offer plug and play interoperability and improved
+                            automation, this is displayed along with the API’s key information
+                            and capability.
+                        </p>
                     </div>
                 </div>
             </section>
 
-            <section className="not-got">
-                <div className="container-fluid d-flex gap-2">
-                    <div className="l-hold">
-                        <div className="d-flex justify-content-around align-items-center">
-                            <div className="text-side">
-                                <h3 className="fsxl32 font-mont text-white fw-600">
-                                    Not got an API yet? The team over at Alphalake Ai can build you one! 😊
-                                </h3>
-                                
-                                <div className="fsxl-l16 font-lucida text-white pt-2">
-                                    Just fill in the contact form and we will be in touch soon!
-                                </div>
-
-                                <img className='not-got-dots' src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/cir_bg_2.svg" alt="dots" />
-                            </div>
-                            <div className="know-form font-mont">
-                                <form onSubmit={onBuildFormSubmit}>
-                                    <input type="text" name="name" value={buildForm.name} onChange={onBuildFormChange} placeholder="Firstname Surname" />
-                                    <input type="email" name="email" value={buildForm.email} onChange={onBuildFormChange} placeholder="Work Email" />
-                                    <input type="submit" value="Submit" />
-                                </form>
-                            </div>
-                        </div>
+            <section className="py-4 container not-got-hold">
+                <div className="not-got d-flex align-items-center justify-content-around">
+                    <img className='not-got-dots right' src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/cir_bg_2.svg" alt="dots" />
+                    <img className='not-got-dots left' src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/cir_bg_2.svg" alt="dots" />
+                    <img className='not-got-dots bottom' src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/cir_bg_2.svg" alt="dots" />
+                    <div>
+                        <h4 className="fsxl40 fw-600 text-white font-mont">
+                            Not got an API yet?
+                        </h4>
+                        <br />
+                        <h6 className="fsxl20 fw-600 text-white font-mont">
+                            We can build you one! 😊
+                        </h6>
+                        <p className='fsxl-l16 font-lucida text-primary-3'>
+                            Just fill in the contact form and we will <br /> be in touch soon!
+                        </p>
                     </div>
-                    <div className="adv-space">
-                        <a href="https://www.projectseagrass.org/" target='_blank' rel='noreferrer'>
-                            <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/pro_seagrass.png" alt="ad" width='100%' />
-                        </a>
+                    <div>
+                        <form onSubmit={onBuildFormSubmit} className='form-hold'>
+                            <input type="text" name="name" placeholder='Forename Surname'
+                                value={buildForm.name} onChange={onBuildFormChange}
+                                className='input-field fsxl-m14 font-mont py-3 px-3'
+                            />
+                            <input type="email" name="email" placeholder='Work Email'
+                                value={buildForm.email} onChange={onBuildFormChange}
+                                className='input-field fsxl-m14 font-mont py-3 px-3'
+                            />
+                            <input type="submit" value="Submit" className='submit-btn font-mont fsxl-m18 py-2 fw-600' />
+                        </form>
                     </div>
                 </div>
             </section>
 
-            <section className="direct" ref={scrollRef}>
+            <section className="container d-flex">
+                <Link to='library' className="start-browsing mx-auto">
+                    <span className="font-mont fsxl20 fw-600">Take me to APIDirect</span>
+                </Link>
+            </section>
+
+            {/* <section className="direct" ref={scrollRef}>
                 <div className="container-fluid text-center font-mont">
                     <h2 className="fsxl36 fw-600 text-white">APIdirect Library</h2>
                     <br />
@@ -313,13 +311,13 @@ export default function Main() {
                 {
                     cards.map((c, i) => <Card key={i} data={c} listView={listView} />)
                 }
-            </section>
+            </section> */}
 
-            <section className="container mt-3 mb-4 pb-2">
+            {/* <section className="container mt-3 mb-4 pb-2">
                 <a href="https://sehta.co.uk/" target='_blank' rel='noreferrer'>
                     <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/sehtafooter.png" alt="shetha ad" width='100%' />
                 </a>
-            </section>
+            </section> */}
             <div className="my-4"></div>
         </main>
     )

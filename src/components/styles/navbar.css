@@ -1,10 +1,8 @@
 nav#main-nav {
-    display: flex;
-    justify-content: space-between;
     width: 100%;
     position: sticky;
     background: #000;
-    top: -1px;
+    top: 0;
     z-index: 2;
     align-items: center;
     padding-top: 2rem;
@@ -14,6 +12,24 @@ nav#main-nav {
     max-width: 1500px;
     margin: auto;
 }
+
+.navbar-links {
+    margin-left: auto;
+    display: none;
+    margin-right: 1rem;
+}
+
+.navbar-links ul {
+    list-style: none;
+    display: flex;
+    column-gap: 1rem;
+    justify-content: center;
+    margin: 0;
+}
+.navbar-links ul li {
+    width: fit-content;
+    text-align: center;
+};
 
 @media (width < 768px) {
     nav#main-nav {
@@ -38,8 +54,7 @@ nav#main-nav {
 }
 
 .sidepanel .btn-holder {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 2rem;
 }
 
 .sidepanel a {
@@ -60,7 +75,18 @@ nav#main-nav {
     margin-left: calc(100% - 2rem - 40px);
 }
 
+@media (min-width: 1025px) {
+    .nav-toggle-btn {
+        display: none;
+    }
+    
+    .navbar-links {
+        display: block;
+    }
+}
+
 .nav-toggle-btn {
+    margin-left: auto;
     font-size: 20px;
     cursor: pointer;
     background-color: #050505;

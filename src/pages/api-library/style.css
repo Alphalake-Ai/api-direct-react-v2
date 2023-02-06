@@ -1,0 +1,54 @@
+section.library-hero  {
+    background-repeat: no-repeat;
+    position: relative;
+    background-position: 20% center;
+    background-image: url('https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/ReactApiImg/direct-center.png');
+}
+section.library-hero .container {
+    position: relative;
+}
+section.library-hero .container .not-got-dots {
+    transform: rotate(180deg);
+    position: absolute;
+    right: -2%;
+    bottom: -50%;
+}
+
+div.like-form {
+    background-color: #001A21;
+    padding: 2.5rem 2rem;
+    width: 380px;
+}
+
+.accordion-item {
+    background-color: transparent;
+    border: none;
+}
+
+#filter-button {
+    background-color: rgba(0, 26, 33, 1);
+    column-gap: 0.5rem;
+    width: fit-content;
+    padding: 0.5rem 1rem;    
+}
+
+#filter-button::after{
+    display: none;
+}
+
+#search-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    background-color: rgba(0, 26, 33, 1);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+#search-box input {
+    width: 100%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: #fff;
+}
