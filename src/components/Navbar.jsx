@@ -3,16 +3,16 @@ import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import "./styles/navbar.css";
 
 const sideItems = [
-    { title: "Alphabot-for-Teams", link: "https://www.alphalake.ai/alphabot-for-teams?hsLang=en", sup: true },
-    { title: "NLP Connect", link: "https://www.alphalake.ai/nlpconnect?hsLang=en", sup: true },
-    { title: "API Direct", link: "https://www.alphalake.ai/apiconnect?hsLang=en", sup: true },
-    { title: "Future Of Health", link: "https://www.alphalake.ai/future-of-health?hsLang=en" },
-    { title: "Technology", link: "https://www.alphalake.ai/technology?hsLang=en" },
-    { title: "Services", link: "https://www.alphalake.ai/services?hsLang=en" },
-    { title: "Events", link: "https://www.alphalake.ai/events?hsLang=en" },
-    { title: "Blog", link: "https://www.alphalake.ai/blog?hsLang=en" },
-    { title: "Resources", link: "https://www.alphalake.ai/resources?hsLang=en" },
-    { title: "Company", link: "https://www.alphalake.ai/company?hsLang=en" }
+    { title: "Home", link: "/" },
+    { title: "APIdirect Library", link: "/library" },
+    { title: "Upload your API", link: "/upload" },
+    { title: "Release Notes", link: "/release-notes" },
+    // { title: "Technology", link: "https://www.alphalake.ai/technology?hsLang=en" },
+    // { title: "Services", link: "https://www.alphalake.ai/services?hsLang=en" },
+    // { title: "Events", link: "https://www.alphalake.ai/events?hsLang=en" },
+    // { title: "Blog", link: "https://www.alphalake.ai/blog?hsLang=en" },
+    // { title: "Resources", link: "https://www.alphalake.ai/resources?hsLang=en" },
+    // { title: "Company", link: "https://www.alphalake.ai/company?hsLang=en" }
 ]
 
 export default function Navbar() {
@@ -41,11 +41,11 @@ export default function Navbar() {
                         <li className={['#/', '/', ''].includes(window.location.hash) ? "text-primary-3": "text-white"}>
                             <Link to='/'>Home</Link>
                         </li>
-                        <li className={window.location.hash.startsWith("#/library") ? "text-primary-3": "text-white"}>
-                            <Link to='library'>APIdirect Library</Link>
+                        <li className={/\#\/library$/.test(window.location.hash) ? "text-primary-3": "text-white"}>
+                            <Link to='/library' >APIdirect Library</Link>
                         </li>
                         <li className={window.location.hash.startsWith("#/upload") ? "text-primary-3": "text-white"}>
-                            <Link to='upload'>Upload your API</Link>
+                            <Link to='/upload'>Upload your API</Link>
                         </li>
                     </ul>
                 </div>
@@ -84,9 +84,9 @@ function SidebarListItem({
 }) {
     return (
         <li>
-            <a href={href}>
+            <Link to={href}>
                 {title} {sup ? <sup>TM</sup> : <></>}
-            </a>
+            </Link>
         </li>
     )
 }

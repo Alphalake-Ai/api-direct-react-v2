@@ -1,0 +1,52 @@
+#release-notes .head {
+    background-color: var(--primary-4);
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+}
+
+#release-info .nav.nav-tabs {
+    border: none;
+    width: 30%;
+}
+#release-info .nav .nav-link{
+    color: #cccccc;
+    font-family: var(--font-mont);
+    font-size: 20px;
+    text-align: left;
+}
+#release-info .nav .nav-link.active {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+}
+#release-info .nav-link:hover,
+#release-info .nav-link:focus {
+    border-color: transparent;
+    font-weight: 600;
+}
+
+#release-info .rel-list {
+    font-family: var(--font-lucida);
+    font-size: 20px;
+}
+#release-info .rel-detail {
+    color: #ccc;
+    padding-bottom: 2rem;
+}
+#release-info .rel-detail h2,
+#release-info .rel-detail h6 {
+    font-family: var(--font-mont);
+}
+
+@media (width < 768.98px) {
+    #release-info .nav.nav-tabs {
+        display: none;
+    }
+}
+
+@media (width < 481px) {
+    #release-info .rel-list {
+        font-size: 12px;
+    }
+}

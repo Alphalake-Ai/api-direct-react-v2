@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import ApiDetail from "./pages/api-detail/index.jsx";
 import Library from "./pages/api-library/index.jsx";
 import Home from "./pages/home/index.jsx";
+import ReleaseNotes from "./pages/release-notes";
 import Upload from "./pages/upload/index.jsx";
 
 export default function App() {
@@ -11,7 +12,8 @@ export default function App() {
     <Switch>
       <Route exact path="/upload" element={<Layout><Upload /></Layout>} />
       <Route exact path="/library" element={<Layout><Library/></Layout>} />
-      <Route path="/detail/:api" element={<Layout><ApiDetail /></Layout>} />
+      <Route path="/library/:api" element={<Layout><ApiDetail /></Layout>} />
+      <Route path="/release-notes" element={<Layout><ReleaseNotes/></Layout>} />
       <Route path="/" element={<Layout><Home /></Layout>} />
     </Switch>
   );

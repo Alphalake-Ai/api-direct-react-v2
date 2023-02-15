@@ -1,11 +1,18 @@
 section.contact {
-    margin-top: 3rem;
     background-image: url('https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/ReactApiImg/details-hero-bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+    padding-bottom: 4rem;
+    padding-top: 4rem;
+}
+
+section.contact .container {
+    row-gap: 2rem;
+}
+
+section.contact .sub-form-hold {
+    width: 584px;
 }
 section.contact .address-hold {
     padding-left: 5rem;
@@ -58,4 +65,67 @@ section.social .container {
     padding-top: 3rem;
     padding-bottom: 3rem;
     margin-bottom: 1.5rem;
+}
+
+section.social .dis-text {
+    width: min(850px, 95%);
+    margin: auto;
+}
+
+@media (width > 769px) {
+    .s-only {
+        display: none;
+    }
+}
+@media (1024.2px < width < 1299px) {
+    section.contact .sub-form-hold {
+        width: 500px;
+    }
+    section.contact .address-hold {
+        padding-left: 6rem;
+    }
+}
+@media (width < 1024px) {
+    section.contact .address-hold {
+        padding-left: 0;
+    }
+}
+
+@media (769px < width < 1024px) {
+    form.subscription-form {
+        width: 500px;
+    }
+}
+
+@media (width < 768.98px) {
+    #release-info > div {
+        padding-left: 1rem;
+    }
+    section.contact {
+        padding-left: 1rem;
+    }
+    form.subscription-form {
+        width: 95%;
+        margin: auto;
+    }
+    section.social .social-media {
+        width: 100%;
+        justify-content: center;
+    }
+    section.social #back-to-home,
+    section.social #to-release-notes {
+        display: none;
+    }
+    section.social .s-only {
+        display: flex;
+        border: none;
+        padding: 1rem;
+    }
+}
+
+@media (width < 481px) {
+
+    form.subscription-form input.field {
+        width: 100%;
+    }
 }

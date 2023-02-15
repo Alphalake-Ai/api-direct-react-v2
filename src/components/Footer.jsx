@@ -5,20 +5,20 @@ export default function Footer() {
     return (
         <footer>
             <section className='contact'>
-                <div className="container d-flex">
-                    <div>
+                <div className="container d-flex flex-wrap">
+                    <div className="sub-form-hold">
                         <h2 className="fsxl32 font-mont text-white fw-600">Subscribe !</h2>
                         <br />
                         <p className="fsxl-l20 font-lucida text-cc">
-                            Get early-bird guest-list for events and <br /> insights from our AI,
-                            health tech and automation <br /> subject matter experts!
+                            Get early-bird guest-list for events and insights from our AI,
+                            health tech and automation subject matter experts!
                         </p>
                         <form className='subscription-form'>
-                            <div className="d-flex align-items-center">
+                            <div className="d-flex flex-wrap align-items-center">
                                 <label className="fsxl20 font-lucida text-cc">Name</label>
                                 <input type="text" name="name" className='field py-2 font-lucida fsxl20' placeholder="Forename Surname" />
                             </div>
-                            <div className="d-flex align-items-center">
+                            <div className="d-flex flex-wrap align-items-center">
                                 <label className="fsxl20 font-lucida text-cc">Work Email</label>
                                 <input type="email" name="email" className='field py-2 font-lucida fsxl20' placeholder="Email" />
                             </div>
@@ -50,15 +50,15 @@ export default function Footer() {
             </section>
             <section className="social">
                 <div className="d-flex justify-content-between container">
-                    <div style={{ width: "239px" }}>
-                        <Link to=''>
+                    <div style={{ width: "239px" }} id="back-to-home">
+                        <Link to='/'>
                             <img
                                 src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/api-direct-v2-1/api-direct-logo.png"
                                 alt="API Direct Logo"
                             />
                         </Link>
                     </div>
-                    <div className="d-flex gap-3">
+                    <div className="d-flex gap-3 social-media">
                         <a href="#" target="_blank">
                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15.6915 2.61523C13.1053 2.61523 10.5771 3.38214 8.42672 4.81898C6.27634 6.25582 4.60032 8.29805 3.61061 10.6874C2.6209 13.0768 2.36195 15.706 2.8665 18.2426C3.37105 20.7791 4.61644 23.1091 6.44519 24.9378C8.27394 26.7666 10.6039 28.012 13.1405 28.5165C15.677 29.0211 18.3062 28.7621 20.6956 27.7724C23.0849 26.7827 25.1272 25.1067 26.564 22.9563C28.0009 20.8059 28.7678 18.2777 28.7678 15.6915C28.7678 13.9743 28.4295 12.2739 27.7724 10.6874C27.1153 9.10094 26.1521 7.65943 24.9378 6.44518C23.7236 5.23094 22.2821 4.26775 20.6956 3.61061C19.1091 2.95346 17.4087 2.61523 15.6915 2.61523ZM15.6915 26.1525C13.6225 26.1525 11.6 25.539 9.87968 24.3895C8.15937 23.24 6.81856 21.6063 6.02679 19.6948C5.23502 17.7833 5.02786 15.6799 5.4315 13.6507C5.83514 11.6214 6.83145 9.75745 8.29445 8.29445C9.75745 6.83145 11.6214 5.83513 13.6507 5.43149C15.6799 5.02785 17.7833 5.23502 19.6948 6.02678C21.6063 6.81855 23.24 8.15937 24.3895 9.87967C25.539 11.6 26.1525 13.6225 26.1525 15.6915C26.1525 18.4659 25.0504 21.1267 23.0886 23.0886C21.1267 25.0504 18.4659 26.1525 15.6915 26.1525Z" fill="#CCCCCC" />
@@ -92,13 +92,26 @@ export default function Footer() {
                             </svg>
                         </a>
                     </div>
-                    <div>
-                        <Link to="release-notes" className="font-mont text-white fw-600 fsxl-l20">APIdirect release notes</Link>
+                    <div id="to-release-notes">
+                        <Link to="/release-notes" className="font-mont text-white fw-600 fsxl-l20">APIdirect release notes</Link>
                     </div>
                 </div>
-                <p className="text-center fsxl-l16 text-cc font-lucida">
-                    APIdirect is an Alphalake Technologies product, the service is built as a free service to <br /> 
-                    help promote interoperability, increased standardisation, data security, user experience <br /> 
+                <div className="container justify-content-between s-only">
+                    <div style={{ width: "239px" }}>
+                        <Link to='/'>
+                            <img
+                                src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/api-direct-v2-1/api-direct-logo.png"
+                                alt="API Direct Logo"
+                            />
+                        </Link>
+                    </div>
+                    <div>
+                        <Link to="/release-notes" className="font-mont text-white fw-600 fsxl-l20">APIdirect release notes</Link>
+                    </div>
+                </div>
+                <p className="text-center fsxl-l16 text-cc font-lucida dis-text">
+                    APIdirect is an Alphalake Technologies product, the service is built as a free service to  
+                    help promote interoperability, increased standardisation, data security, user experience
                     and knowlede in and across healthcare globally. (c) Alphalake Technologies Ltd
                 </p>
             </section>

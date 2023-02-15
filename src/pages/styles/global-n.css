@@ -115,6 +115,10 @@ main > * {
     font-size: 14px;
     line-height: 17px;
 }
+.fsxl16 {
+    font-size: 16px;
+    line-height: 22px;
+}
 .fsxl12 {
     font-size: 12px;
     line-height: 150%;
@@ -138,6 +142,9 @@ main > * {
 
 .capitalize {
     text-transform: capitalize;
+}
+.ml-auto {
+    margin-left: auto;
 }
 
 body {
@@ -166,6 +173,9 @@ body {
 }
 .fw-400 {
     font-weight: 400;
+}
+.fw-300 {
+    font-weight: 300;
 }
 
 .grid-center {
@@ -206,6 +216,9 @@ a {
     align-items: center;
     column-gap: 0.6rem;
 }
+.search-tag svg path {
+    fill: var(--primary-3);
+}
 
 .text-tags{
     display: flex;
@@ -216,11 +229,14 @@ a {
     display: flex;
     align-items: center;
     column-gap: 0.4rem;
-}
-.text-tags .text-tag {
-    background-color: var(--primary-3-25);
-    padding: 0.4rem 0.8rem;
+    padding: 0.2rem 0.8rem;
     border-radius: 25px;
+    border: 1px solid #fff;
+}
+.text-tags.filled .text-tag {
+    background-color: var(--primary-3-25);
+    border: none;
+    padding: 0.3rem 0.8rem;
 }
 .text-tags .text-tag .tag-image {
     width: 18px;
@@ -376,6 +392,9 @@ input.input-field:focus {
     .know-form form input {
         font-size: 12px;
     }
+    .fsxl48 {
+        font-size: 40px;
+    }
 }
 
 @media (481px < width < 768px) {
@@ -391,6 +410,9 @@ input.input-field:focus {
         font-size: 16px;
         line-height: 19px;
     }
+    .fsxl48{
+        font-size: 40px;
+    }
 }
 
 @media (width < 481px) {
@@ -405,6 +427,12 @@ input.input-field:focus {
     .fsxl24 {
         font-size: 14px;
         line-height: 16px;
+    }
+    .fsxl48, .fsxl40 {
+        font-size: 32px;
+    }
+    .fsxl-l20 {
+        font-size: 14px;
     }
 }
 
