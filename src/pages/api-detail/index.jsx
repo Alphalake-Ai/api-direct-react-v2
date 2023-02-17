@@ -63,9 +63,8 @@ export default function Main() {
 
     const params = useParams();
 
-    const [loading, setLoading] = useState(true);
     const [apiData, setApiData] = useState(fakeDatabase['cerner-r4']);
-    const [nameSlug, id] = params.api.split("@");
+    const [_, id] = params.api.split("@");
 
     const scrollRef = useRef();
     const executeScroll = () => scrollRef.current.scrollIntoView();
@@ -78,7 +77,6 @@ export default function Main() {
                 // console.log(res.data);
                 setApiData(res.data);
             };
-            setLoading(false);
         });
         executeScroll();
     }, [params.api]);
@@ -101,9 +99,9 @@ export default function Main() {
     }
 
     return (
-        <main>
+        <>
             <section id="api-detail" ref={scrollRef}>
-                <div className="detail-hero container text-white container-fluid">
+                <div className="detail-hero container text-cc container-fluid">
                     <div className="font-lucida fsxl-l16">
                         <Link to='/library'>
                             APIdirect Library 
@@ -125,11 +123,11 @@ export default function Main() {
                     </div>
                     <div className="overview-n-form">
                         <div className="overview">
-                            <h6 className="fsxl20 text-white font-mont fw-600">
+                            <h6 className="fsxl20 text-cc font-mont fw-600">
                                 Overview
                             </h6>
                             <br />
-                            <p className="font-lucida text-white fsxl-l16 fw-400">
+                            <p className="font-lucida text-cc fsxl-l16 fw-400">
                                 {
                                     apiData.description instanceof Array ?
                                         apiData.description.map((d, i) => <p key={i}>{d}</p>)
@@ -146,7 +144,7 @@ export default function Main() {
                         <div className='like-form'>
                             <div className="font-mont">
                                 <div className="pb-4">
-                                    <h5 className="fsxl20 text-white  fw-600">Enquire about this API</h5>
+                                    <h5 className="fsxl20 text-cc  fw-600">Enquire about this API</h5>
                                 </div>
                                 <form className='form-hold' onSubmit={onEnquireFormSubmit}>
                                     <input type="text" name="name" className='fsxl-l14 font-mont input-field py-2 px-3' value={enquireForm.name} onChange={onEnquireFormChange} placeholder="Firstname Surname" />
@@ -156,26 +154,26 @@ export default function Main() {
                             </div>
                         </div>
                     </div>
-                    <div className="d-flex w-100 justify-content-between res-n-form">
+                    <div className="d-flex w-100 justify-content-between res-n-form s-flex-column">
                         <div className="dev-res d-flex">
                             <div className="w-50">
-                                <h6 className="fsxl20 text-white font-mont fw-600 pb-2">
+                                <h6 className="fsxl20 text-cc font-mont fw-600 pb-2">
                                     Developer Resources
                                 </h6>
-                                <a href={apiData.documentationLink || "#"} className="fsxl-m16 fw-600 o-08 text-white font-mont">
+                                <a href={apiData.documentationLink || "#"} className="fsxl-m16 fw-600 o-08 text-cc font-mont">
                                     <span>Documentation</span>
                                     <span className="px-2"></span>
                                     <img src="/images/open_in_new.svg" alt="open in new" width='20px' />
                                 </a>
                                 <div className="w-100 d-flex pt-3">
                                     <div className="w-50">
-                                        <h6 className="fsxl-m16 fw-600 o-08 text-white font-mont">
+                                        <h6 className="fsxl-m16 fw-600 o-08 text-cc font-mont">
                                             Doc Tooling:
                                         </h6>
                                         <ToolImgRenderer tag={apiData.docTooling} />
                                     </div>
                                     <div className="w-50">
-                                        <h6 className="fsxl-m16 fw-600 o-08 text-white font-mont">
+                                        <h6 className="fsxl-m16 fw-600 o-08 text-cc font-mont">
                                             Wrapper:
                                         </h6>
                                         <ToolImgRenderer tag={apiData.wrapper} />
@@ -183,7 +181,7 @@ export default function Main() {
                                 </div>
                             </div>
                             <div className="w-50">
-                                <h6 className="fsxl20 text-white font-mont fw-600 pb-2">
+                                <h6 className="fsxl20 text-cc font-mont fw-600 pb-2">
                                     Accessibility
                                 </h6>
                                 <div className="fsxl-m16 fw-600 font-mont" style={{ color: "var(--primary-3)" }}>
@@ -196,7 +194,7 @@ export default function Main() {
                                         <a href="#" className="fw-600">become a partner here.</a>
                                     </p>
                                 </div>
-                                <div className="font-mont o-08 fw-600 text-white pt-1 fsxl-m16">
+                                <div className="font-mont o-08 fw-600 text-cc pt-1 fsxl-m16">
                                     {
                                         apiData.documentation ? <>
                                             Documentation <span className="px-1"></span> <svg xmlns="http://www.w3.org/2000/svg"
@@ -232,7 +230,7 @@ export default function Main() {
                         <div className='like-form'>
                             <div className="font-mont">
                                 <div className="pb-4">
-                                    <h5 className="fsxl20 text-white  fw-600">Enquire about this API</h5>
+                                    <h5 className="fsxl20 text-cc  fw-600">Enquire about this API</h5>
                                 </div>
                                 <form className='form-hold' onSubmit={onEnquireFormSubmit}>
                                     <input type="text" name="name" className='fsxl-l14 font-mont input-field py-2 px-3' value={enquireForm.name} onChange={onEnquireFormChange} placeholder="Firstname Surname" />
@@ -256,7 +254,7 @@ export default function Main() {
                             {
                                 apiData.fhirCompliant ?
                                     <span>
-                                        <img src="https://www.alphalake.ai/hubfs/api-connect-images/FHIR.png" alt="FHIR" width='40px' /> <span className="fw-600" style={{ color: "#FF4A00" }} >FHIR Resources</span>
+                                        <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/FHIR_LOGO_1702.png" alt="FHIR" width='40px' /> <span className="fw-600" style={{ color: "#FF4A00" }} >FHIR Resources</span>
                                     </span> :
                                     <span className='fw-600'>Endpoints</span>
                             }
@@ -333,7 +331,7 @@ export default function Main() {
                                     } 
                                     {
                                         
-                                        !apiData.nonFhirEndpoints.length? <span className='font-mont text-white'>No endpoints available.</span> : ""
+                                        !apiData.nonFhirEndpoints.length? <span className='font-mont text-cc'>No endpoints available.</span> : ""
                                     }
                                 </div>
                         }
@@ -341,7 +339,7 @@ export default function Main() {
                     </div>
                     <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                         <div>
-                            <h5 className="fsxl32 font-mont fw-600 text-white">Triggers ({apiData.triggers.length})</h5>
+                            <h5 className="fsxl32 font-mont fw-600 text-cc">Triggers ({apiData.triggers.length})</h5>
                             <p className='font-lucida'>
                                 Use these in your "recipe" to make an event happen elsewhere,
                                 whether in Alphabot for Teams or any other connected system (Actions).
@@ -356,7 +354,7 @@ export default function Main() {
                         </div>
                         <br />
                         <div>
-                            <h5 className="fsxl32 font-mont fw-600 text-white">Actions ({apiData.actions.length})</h5>
+                            <h5 className="fsxl32 font-mont fw-600 text-cc">Actions ({apiData.actions.length})</h5>
                             <p className='font-lucida'>
                                 Insert these as a step in your "recipe" and they will happen
                                 automatically following a Trigger from elsewhere in Cerner or
@@ -373,7 +371,7 @@ export default function Main() {
                     </div>
                 </div>
             </section>
-        </main>
+        </>
     )
 }
 

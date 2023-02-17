@@ -1,7 +1,7 @@
 export function FHIR() {
     return (
         <div className="img-tag">
-            <img className="fhir-image" src="https://www.alphalake.ai/hubfs/api-connect-images/FHIR.png" />
+            <img className="fhir-image" src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/FHIR_LOGO_1702.png" width="25px" />
             <div className="font-mont fhir-text fw-600">FHIR</div>
         </div>
     )
@@ -19,8 +19,8 @@ export function WorkatoNoCode() {
 export function NonFHIR() {
     return (
         <div className="img-tag">
-            <img className="fhir-image" src="https://www.alphalake.ai/hubfs/api-connect-images/FHIR.png" style={{ filter: "grayscale(100)" }} />
-            <div className="fhir-text text-white fw-600">Non-FHIR</div>
+            <img className="fhir-image" src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/FHIR_LOGO_1702.png" style={{ filter: "grayscale(100)" }} />
+            <div className="fhir-text text-cc fw-600">Non-FHIR</div>
         </div>
     )
 }

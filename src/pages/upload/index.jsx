@@ -26,7 +26,6 @@ export default function Main() {
   });
 
   const [fhirResTitle, setFhirResTitle] = useState([]);
-  // const [prevTitle, setPrevTitle] = useState('');
 
   const helpRef = useRef();
 
@@ -37,15 +36,6 @@ export default function Main() {
     } else {
       setFhirResTitle(prev => [...prev, name]);
     }
-    // if (value !== 'true') {
-    //   if(fhirResTitle[name].includes(value)) {
-    //     let temp = fhirResTitle[name].filter(r => r !== value);
-    //     setFhirResTitle(prev => ({...prev, [name]: temp}));
-    //   } else {
-    //     let temp = [...fhirResTitle[name], value];
-    //     setFhirResTitle(prev => ({...prev, [name]: temp}));
-    //   }
-    // }
   }
 
   const [fhirResList, setFhirResList] = useState(emptyResListMap);
@@ -63,7 +53,6 @@ export default function Main() {
   const navBasic = useRef();
   const navEndpoint = useRef();
   const navAccess = useRef();
-  const basicForm = useRef();
 
   function handleBasicFormSubmit(e) {
     e.preventDefault();
@@ -79,7 +68,6 @@ export default function Main() {
     e.preventDefault();
     try {
       let r = fhirResTitle.map((t, i) => ({ title: t, items: fhirResList[t] }))
-      console.log(r);
       await axios.post(baseUrl + '/api-cards', {...data, resources: r});
       alert("Success");
     } catch (error) {
@@ -106,15 +94,8 @@ export default function Main() {
   const topRef = useRef();
   useEffect(() => {
     topRef.current.scrollIntoView()
-    // console.log(fhirResTitle);
-    // console.log(fhirResList);
   }, [])
 
-  // useEffect(() => {
-  //   console.log(data);
-  //   // console.log(fhirResTitle);
-  //   // console.log(fhirResList);
-  // }, [data])
 
   function handleSelectChange({ target }) {
     if (/true|false/.test(target.value)) {
@@ -145,13 +126,13 @@ export default function Main() {
       <section id='upload' ref={topRef}>
         <div className="container d-flex align-items-center justify-content-between">
           <div className='text-content'>
-            <h1 className="fsxl48 font-mont fw-600 text-white">
+            <h1 className="fsxl48 font-mont fw-600 text-cc">
               Upload your API
             </h1>
             <h5 className="fsxl24 fw-600 font-mont text-primary-2 py-2">
               Showcase your API and its capabilities.
             </h5>
-            <div className="font-lucida fsxl-l18 text-white fw-400">
+            <div className="font-lucida fsxl-l18 text-cc fw-400">
               <p>
                 Increase awareness of your organisation’s Healthcare API with
                 a <span style={{ color: "#F8B225" }}>FREE</span> listing on <span className="text-primary-2">APIdirect</span>,
@@ -177,11 +158,11 @@ export default function Main() {
         <br />
         <div className="container">
           <div className="title px-2 not-xl">
-            <h5 className="fsxl24 font-mont fw-600 text-white">
+            <h5 className="fsxl24 font-mont fw-600 text-cc">
               Registration Form
             </h5>
             <br />
-            <p className="font-lucida fsxl-l18 text-white">
+            <p className="font-lucida fsxl-l18 text-cc">
               Please fill in all fields.
             </p>
           </div>
@@ -189,11 +170,11 @@ export default function Main() {
             <div id='form-tabs'>
               <nav>
                 <div className="title">
-                  <h5 className="fsxl24 font-mont fw-600 text-white">
+                  <h5 className="fsxl24 font-mont fw-600 text-cc">
                     Registration Form
                   </h5>
                   <br />
-                  <p className="font-lucida fsxl-l18 text-white">
+                  <p className="font-lucida fsxl-l18 text-cc">
                     Please fill in all fields.
                   </p>
                 </div>
@@ -211,10 +192,10 @@ export default function Main() {
                     type="button" role="tab" aria-controls="nav-contact" aria-selected="false" ref={navAccess} >
                     Accessibility
                   </button>
-                  <div className='text-white xl-only'>
+                  <div className='text-cc xl-only'>
                     <div className="need-help" ref={helpRef}>
                       <div className='d-flex justify-content-between'>
-                        <h6 className="fsxl-m16 font-mont fw-600 text-white">
+                        <h6 className="fsxl-m16 font-mont fw-600 text-cc">
                           Need help?
                         </h6>
                         <svg onClick={() => {helpRef.current.style.display = 'none'}} width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -241,7 +222,7 @@ export default function Main() {
               <div className="tab-content" id="nav-tabContent">
                 <div className="tab-pane fade show active" id="nav-basic" role="tabpanel" aria-labelledby="nav-basic-tab">
                   <div className='section-title'>
-                    <h5 className="fsxl24 fw-600 font-mont text-white">
+                    <h5 className="fsxl24 fw-600 font-mont text-cc">
                       Basic Information
                     </h5>
                   </div>
@@ -428,7 +409,7 @@ export default function Main() {
 
                 <div className="tab-pane fade" id="nav-resource" role="tabpanel" aria-labelledby="nav-resource-tab">
                   <div className='section-title'>
-                    <h5 className="fsxl24 fw-600 font-mont text-white">
+                    <h5 className="fsxl24 fw-600 font-mont text-cc">
                       API Resource/Endpoints
                     </h5>
                   </div>
@@ -510,7 +491,7 @@ export default function Main() {
 
                 <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                   <div className='section-title'>
-                    <h5 className="fsxl24 fw-600 font-mont text-white">
+                    <h5 className="fsxl24 fw-600 font-mont text-cc">
                       Accessibility
                     </h5>
                   </div>
@@ -608,14 +589,4 @@ export default function Main() {
       </section>
     </main>
   )
-}
-
-
-function checkBasicDetails (data) {
-  // const keys = [
-  //   "name" ,"publisher" ,"firstRelease" ,"latestRelease","callsCount",
-  //   "documentation" ,"currentVersion","type" ,"tools" ,"dataFormats"
-  // ];
-  console.log(data);
-  return Object.keys(data).every(k => data[k] !== "");
 }

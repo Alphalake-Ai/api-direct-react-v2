@@ -8,11 +8,15 @@ section.hero>.container-fluid {
     position: relative;
 }
 
+section.hero .browse:hover {
+    color: var(--primary-3) !important;
+}
 section.hero .browse {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     bottom: 2rem;
+    transition: 0.2s ease;
 }
 
 section.what .what-title {
@@ -26,15 +30,15 @@ section.what .what-desc {
 .start-browsing {
     border: 1px solid #fff;
     width: fit-content;
-    padding: 0.3rem 2rem;
-    border-radius: 25px;
+    padding: 0.6rem 2.5rem;
+    border-radius: 40px;
     transition: 0.3s ease;
     color: #fff !important;
 }
 
 .start-browsing:hover {
     color: #000 !important;
-    background-color: #fff;
+    background-color: #ccc;
 }
 
 section.probably-ads .container {
@@ -49,8 +53,8 @@ section.probably-ads .container {
     position: absolute;
 }
 .ad-cards .ac {
-    background-color: #fff;
-    background-size: contain;
+    background-color: #ccc;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     opacity: 1;
@@ -68,6 +72,14 @@ section.probably-ads .container {
 
 section.probably-ads .ad-card-right {
     width: 350px;
+}
+@media (width > 1024px) {
+    section.probably-ads .ad-card-right {
+        width: 450px;
+    }
+    section.probably-ads .ad-card-right p {
+        width: 350px;
+    }
 }
 
 div.not-got-hold {
@@ -105,3 +117,144 @@ div.not-got {
 div.not-got .form-hold {
     width: 452px;
 }
+
+#ngth {
+    max-width: 420px;
+}
+
+@media (1024px < width < 1399px) {
+    .ad-cards .ac {
+        min-width: 380px;
+        min-height: 234px;
+    }
+    section.probably-ads .container {
+        min-height: 300px;
+    }
+}
+
+@media (769px < width < 1023.98px) {
+    .ad-cards .ac {
+        min-width: 278px;
+        min-height: 170px;
+    }
+    section.probably-ads .container {
+        min-height: 200px;
+    }
+    section.what .what-title,
+    section.what .what-desc {
+        width: 50%;
+    } 
+    section.what .start-browsing {
+        transform: translateY(20px);
+    }
+    #ngth {
+        width: 310px;
+    }
+    section.container.not-got-hold {
+        padding: 0;
+    }
+    div.not-got .form-hold {
+        width: 340px;
+    }
+    div.not-got {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+    
+}
+
+@media (width < 768.98px) {
+    .ad-cards .ac {
+        min-width: 247px;
+        min-height: 141px;
+    }
+    section.probably-ads .ad-cards {
+        max-width: 300px;
+    }
+    section.probably-ads .container .ad-card-right {
+        margin: auto;
+    }
+    section.probably-ads .container .ad-cards {
+        min-height: 200px;
+        transform: translateX(30%);
+    }
+    div.not-got {
+        row-gap: 1rem;
+    }
+    img.not-got-dots {
+        display: none;
+    }
+    section.what .what-title {
+        width: 100%;
+    }
+    section.what .what-title .fsxl40 {
+        font-size: 32px;
+        line-height: 39px;
+    }
+    section.what .what-desc{
+        width: 100%;
+    }
+    div.not-got .form-hold {
+        width: min(80vw, 380px);
+        margin: auto;
+    }
+    section.what .start-browsing {
+        transform: translateY(20px);
+    }
+    #ngth {
+        width: 90%;
+    }
+}
+
+@media (width < 480.98px) {
+    section.probably-ads .container .ad-cards {
+        transform: translateX(10%);
+    }
+    section.hero .browse span {
+        display: none;
+    }
+}
+@media (width > 480px) {
+    #carousel-hold {
+        padding-left: 0;
+        padding-right: 0;        
+    }
+}
+.scroller {
+    position: relative;
+    overflow: hidden;
+    width: 20rem;
+    height: 1.8ch;
+}
+
+@media (width > 100px) {
+    .scroller {
+        width: 100%;
+    }
+}
+
+.scroller > span {
+    position: absolute;
+    top: 0;
+    animation: slide 10s infinite;
+}
+@keyframes slide {
+    0% {
+      top: 0;
+    }
+    20% {
+      top: -1.2em;
+    }
+    40% {
+      top: -2.4em;
+    }
+    60% {
+      top: -3.6em;
+    }
+    80% {
+        top: -4.8em;
+    }
+    100% {
+        top: 0;
+    }
+  }

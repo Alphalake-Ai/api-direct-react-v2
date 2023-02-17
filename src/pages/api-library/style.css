@@ -1,9 +1,9 @@
-section.library-hero  {
+/* section.library-hero  {
     background-repeat: no-repeat;
     position: relative;
     background-position: 20% center;
     background-image: url('https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/ReactApiImg/direct-center.png');
-}
+} */
 section.library-hero .container {
     position: relative;
 }
@@ -14,11 +14,29 @@ section.library-hero .container .not-got-dots {
     bottom: -50%;
 }
 
+section.library-hero .container .text {
+    height: 500px;
+    width: 610px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-position: center;
+    background-image: url('https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/ReactApiImg/direct-center.png');
+}
+
 div.like-form {
     background-color: #001A21;
-    padding: 2.5rem 2rem;
+    padding: 3rem 2rem;
     width: 380px;
 }
+div.like-form .form-hold input{
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    border-radius: 40px;
+}
+
 
 .accordion-item {
     background-color: transparent;
@@ -59,18 +77,22 @@ div.like-form {
     background-color: transparent;
     outline: none;
     border: none;
-    color: #fff;
+    color: #ccc;
     font-family: var(--font-mont);
 }
 
 .tag-box {
     display: flex;
-    column-gap: 16px;
+    gap: .6rem;
 }
 
 .tag-box .search-tag {
     border: 1px solid transparent;
     cursor: pointer;
+    transition: 0.2s ease;
+}
+.tag-box .search-tag:hover {
+    border-color: var(--primary-3);
 }
 .tag-box .search-tag.active {
     border-color: var(--primary-3);
@@ -91,7 +113,7 @@ div.like-form {
     right: -140%;
     background-color: rgba(2, 45, 51, 1);
     font-family: var(--font-lucida);
-    color: #fff;
+    color: #ccc;
 }
 .flag:hover::after {
     display: block;
@@ -204,7 +226,7 @@ input:checked+.slider:before {
 }
 .cards .card .title-logo .free-api {
     font-size: 14px;
-    color: #fff;
+    color: #ccc;
     font-family: var(--font-mont);
     border: 1px solid #fff;
     padding: 0.2rem 1rem;
@@ -219,7 +241,7 @@ input:checked+.slider:before {
     display: grid;
     place-items: center;
     overflow: hidden;
-    background-color: #fff;
+    background-color: #ccc;
 }
 
 .cards .card .grid-tag-img {
@@ -231,7 +253,7 @@ input:checked+.slider:before {
 }
 .card .desc {
     font-family: var(--font-lucida);
-    color: #fff;
+    color: #ccc;
     font-size: 16px;
     line-height: 16px;
     max-height: 48px;
@@ -295,4 +317,46 @@ input:checked+.slider:before {
 .cards.list .info {
     margin-top: auto;
     margin-bottom: auto;
+}
+
+
+@media (1025px < width < 1399px) {
+    section.library-hero .container .text {
+        width: 430px;
+    }
+}
+
+@media ( 769px < width < 1024.98px) {
+    section.library-hero .container .text {
+        width: 390px;
+    }
+}
+
+@media (width < 768.98px) {
+    section.library-hero .container .text {
+        width: min(100%, 390px);
+        height: 350px;
+    }
+    #view-switch {
+        display: none;
+    }
+}
+
+@media (width < 480.98px) {
+    div.like-form {
+        width: 100%;
+    }
+    #filter-button .fsxl-l16 {
+        display: none;
+    }
+    .toggle-text {
+        font-size: 12px;
+    }
+}
+
+.cards .card {
+    transition: 0.2s ease;
+}
+.cards .card:hover {
+    background-color: var(--primary-3);
 }

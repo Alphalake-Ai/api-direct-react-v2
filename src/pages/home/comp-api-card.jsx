@@ -36,7 +36,7 @@ export default function Card({ data, listView }) {
         // <Link to={createSlug(data.title)}>
             <div className="card" onClick={onCardClick}>
                 <div className="brand-n-title">
-                    <div className="title capitalize fsxl36 text-white font-mont fw-600">{data?.name}</div>
+                    <div className="title capitalize fsxl36 text-cc font-mont fw-600">{data?.name}</div>
                     <div className="brand-image-hold">
                         <img src={data?.logoUrl || defaultLogoUrl} width="100%" />
                     </div>
@@ -60,7 +60,7 @@ export default function Card({ data, listView }) {
                     }
                 </div>
                 <div className="desc">
-                    <p className="font-lucida text-white fsxl-l16">
+                    <p className="font-lucida text-cc fsxl-l16">
                         { listView ? 
                             data?.description[0].split(" ").slice(0, 20).join(" ")+"..."
                             : data?.description[0].split(" ").slice(0, 33).join(" ")+"..."

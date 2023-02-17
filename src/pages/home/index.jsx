@@ -35,22 +35,30 @@ export default function Main() {
     return (
         <main id="home" ref={scrollRef}>
             <section className="cdh hero d-flex flex-column py-3">
-                <div className="my-auto container font-mont my-auto">
-                    <h1 className="fsxl72 fw-600 text-white">
+                <div className="my-auto container font-mont my-auto" id='carousel-hold'>
+                    <h1 className="fsxl72 fw-600 text-cc">
                         The world's first <br /> Healthcare API library.
                     </h1>
-                    <br />
-                    <h3 className="fsxl40 fw-600 text-primary-3">
-                        For Healthcare Innovators.
-                    </h3>
+                    <div className="fsxl40 pt-3 fw-600 text-primary-3 d-flex">
+                        <span className="m-fit-content">For Healthcare</span>&nbsp;
+                        <div className="scroller">
+                            <span>
+                                Innovators. <br />
+                                Digital Leaders. <br />
+                                Automation Experts. <br />
+                                System Integrators. <br />
+                                Transformers.
+                            </span>
+                        </div>
+                    </div>
                 </div>
-                <div className="text-center text-white browse">
+                <div className="text-center text-cc browse">
                     <Link to='library'>
-                        <h4 className="fsxl24 font-mont">
+                        <h4 className="fsxl24 fw-600 font-mont">
                             Browse our API Library
-                            <span style={{ marginLeft: '2rem' }}>
+                            <span style={{ marginLeft: '1.5rem' }}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                    <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                 </svg>
                             </span>
                         </h4>
@@ -64,14 +72,14 @@ export default function Main() {
                         What is APIdirect?
                     </h5>
                     <br />
-                    <div className="d-flex justify-content-between">
+                    <div className="d-flex s-flex-column justify-content-between">
                         <div className='what-title'>
-                            <span className="font-mont fsxl48 fw-600 text-white">
+                            <span className="font-mont fw-600 fsxl48 text-cc">
                                 Discover what's possible with APIdirect.
                             </span>
                         </div>
                         <div className='what-desc d-flex flex-column py-3'>
-                            <span className="fsxl-l16 font-lucida text-white">
+                            <span className="fsxl-l16 font-lucida text-cc">
                                 The library serves as a <span style={{ color: "#F8B225" }}>FREE</span> knowledge base for the digital health
                                 tech community to access simplified information on API’s that exist
                                 across the health and care ecosystem.
@@ -86,13 +94,13 @@ export default function Main() {
             </section>
 
             <section className="py-4 my-4 probably-ads">
-                <div className="container d-flex justify-content-between">
+                <div className="container d-flex s-flex-column justify-content-between">
                     <div className="ad-cards">
                         <div className="ac back"></div>
                         <div className="ac fore"></div>
                     </div>
                     <div className="ad-card-right my-auto">
-                        <p className="font-lucida text-white fsxl-l16">
+                        <p className="font-lucida text-cc fsxl-l16">
                             Private and open APIs can be searched or browsed
                             as both traditional APIs and modern no-code Connectors.
                             Each API contains a simplified summary of the data endpoints
@@ -111,29 +119,29 @@ export default function Main() {
 
             <br />
             <section className="py-4 container not-got-hold">
-                <div className="not-got d-flex align-items-center justify-content-around">
+                <div className="not-got s-flex-column d-flex align-items-center justify-content-around">
                     <img className='not-got-dots right' src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/cir_bg_2.svg" alt="dots" />
                     <img className='not-got-dots left' src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/cir_bg_2.svg" alt="dots" />
                     <img className='not-got-dots bottom' src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/cir_bg_2.svg" alt="dots" />
-                    <div>
-                        <h4 className="fsxl40 fw-600 text-white font-mont">
+                    <div id='ngth'>
+                        <h4 className="fsxl40 fw-600 text-cc font-mont">
                             Not got an API yet?
                         </h4>
                         <br />
-                        <h6 className="fsxl20 fw-600 text-white font-mont">
+                        <h6 className="fsxl20 fw-600 text-cc font-mont">
                             We can build you one! 😊
                         </h6>
-                        <p className='fsxl-l16 font-lucida text-primary-3'>
-                            Just fill in the contact form and we will <br /> be in touch soon!
+                        <p className='fsxl-l16 pt-2 font-lucida text-primary-3'>
+                            Just fill in the contact form and we will be in touch soon!
                         </p>
                     </div>
                     <div>
-                        <form onSubmit={onBuildFormSubmit} className='form-hold'>
-                            <input type="text" name="name" placeholder='Forename Surname'
+                        <form onSubmit={onBuildFormSubmit} id="build-form" className='form-hold'>
+                            <input type="text" required name="name" placeholder='Forename Surname'
                                 value={buildForm.name} onChange={onBuildFormChange}
                                 className='input-field fsxl-m14 font-mont py-3 px-3'
                             />
-                            <input type="email" name="email" placeholder='Work Email'
+                            <input type="email" required name="email" placeholder='Work Email'
                                 value={buildForm.email} onChange={onBuildFormChange}
                                 className='input-field fsxl-m14 font-mont py-3 px-3'
                             />
@@ -143,12 +151,13 @@ export default function Main() {
                 </div>
             </section>
 
-            <section className="container d-flex">
+            <section className="container d-flex mb-4 pb-4">
                 <Link to='library' className="start-browsing mx-auto">
                     <span className="font-mont fsxl20 fw-600">Take me to APIDirect</span>
                 </Link>
             </section>
-            <div className="my-4"></div>
+            <br />
+            <br />
         </main>
     )
 }

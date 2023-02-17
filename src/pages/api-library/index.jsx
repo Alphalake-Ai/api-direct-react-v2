@@ -166,41 +166,41 @@ export default function Main() {
 
     
     return (
-        <main>
+        <>
             <section className="cdh center library-hero" ref={scrollRef}>
-                <div className="container align-items-center justify-content-between d-flex">
+                <div className="container align-items-center justify-content-between d-flex s-flex-column">
                 <img className='not-got-dots' src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/cir_bg_2.svg" alt="dots" />
                     <div className='text'>
-                        <h1 className="fsxl64 font-mont text-white fw-600">
+                        <h1 className="fsxl64 font-mont text-cc fw-600">
                             APIdirect Library
                         </h1>
                         <br />
                         <p className='font-mont fsxl20 fw-600'>
                             <span className='text-primary-3'>
-                                Browse our selection of available APIs or if you would like <br />
+                                Browse our selection of available APIs or if you would like
                                 to have yours listed, request it 
                             </span>
                             <span className='mx-1'></span>
-                            <Link to='upload' className='text-white'>
+                            <Link to='/upload' className='text-cc'>
                                 here.
                             </Link>
                         </p>
                     </div>
                     <div className="like-form">
                         <div>
-                            <h4 className="fsxl20 font-mont text-white fw-600">Like what you see?</h4>
+                            <h4 className="fsxl20 font-mont text-cc fw-600">Like what you see?</h4>
                             <p className="fsxl-l14 py-2 text-cc font-mont">
                                 Do you see an API that you think will be beneficial to your organisation? Fill out the form below and we will be in touch soon!
                             </p>
                         </div>
                         <form className='form-hold' onSubmit={onInfoFormSubmit}>
-                            <input type="text" name="name" className='fsxl-l14 font-mont input-field py-2 px-3' placeholder='Forename Surname'
+                            <input type="text" required name="name" className='fsxl-l14 font-mont input-field  px-3' placeholder='Forename Surname'
                                 value={infoForm.name} onChange={onInfoFormChange} 
                             />
-                            <input type="email" name="email" className='fsxl-l14 font-mont input-field py-2 px-3' placeholder='Work Email'
+                            <input type="email" required name="email" className='fsxl-l14 font-mont input-field  px-3' placeholder='Work Email'
                                 value={infoForm.email} onChange={onInfoFormChange}
                             />
-                            <input type="submit" value="Submit" className='submit-btn font-mont fw-600 py-1' />
+                            <input type="submit" value="Submit" className='submit-btn font-mont fw-600 ' />
                         </form>
                     </div>
                 </div>
@@ -213,7 +213,7 @@ export default function Main() {
                                 data-bs-target="#collapseFilterMenu" aria-expanded="true" aria-controls="collapseFilterMenu"
                             >
                                 <FilterIcon />
-                                <span className='font-mont text-white fw-600 fsxl-l16'>Filter</span>
+                                <span className='font-mont text-cc fw-600 fsxl-l16'>Filter</span>
                             </button>
                             <div id='search-box'>
                                 <SearchIcon/>
@@ -223,7 +223,7 @@ export default function Main() {
                             </div>
                             <button id='view-switch' onClick={() => setListView(prev => !prev)}>
                                 {listView ? <GridIcon /> : <ListIcon />}
-                                <span className='font-mont text-white fw-600 fsxl-l16'>
+                                <span className='font-mont text-cc fw-600 fsxl-l16'>
                                     {listView ? "Grid View" : "List View"}
                                 </span>
                             </button>
@@ -233,8 +233,8 @@ export default function Main() {
                         >
                             <div className="accordion-body py-3 px-0">
                                 <div>
-                                    <h4 className="fw-600 font-mont text-white fsxl-m16">Filter by tag: </h4>
-                                    <div className="d-flex tag-box">
+                                    <h4 className="fw-600 font-mont text-cc fsxl-m16">Filter by tag: </h4>
+                                    <div className="d-flex tag-box flex-wrap">
                                         {
                                             tags.map((t, i) => <div key={i} className={`search-tag ${selectedTags.includes(t.tag) ? 'active' : ''}`}
                                                 onClick={() => onTagClick(t.tag)}>
@@ -245,23 +245,23 @@ export default function Main() {
                                 </div>
                                 <div className="filter-hold">
                                     <div id='region-filter'>
-                                        <h4 className="fw-600 font-mont text-white fsxl-m16">Format: </h4>
+                                        <h4 className="fw-600 font-mont text-cc fsxl-m16">Format: </h4>
                                         <FormatSelector setSelected={setFormats} selected={formats} />
                                     </div>
                                     <div id='access-filter'>
-                                        <h4 className="fw-600 font-mont text-white fsxl-m16">Access: </h4>
+                                        <h4 className="fw-600 font-mont text-cc fsxl-m16">Access: </h4>
                                         <AccessSelector setSelected={setAccessFilters} selected={accessFilters} />
                                     </div>
                                     <div id='fhir-filter'>
-                                        <h4 className="fw-600 font-mont text-white fsxl-m16">FHIR: </h4>
+                                        <h4 className="fw-600 font-mont text-cc fsxl-m16">FHIR: </h4>
                                         <div className="d-flex gap-3">
-                                            <ToggleSwitch logo='https://www.alphalake.ai/hubfs/api-connect-images/FHIR.png'
+                                            <ToggleSwitch logo='https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/FHIR_LOGO_1702.png'
                                                 name="fhir" onChange={onSingleFilterChange} checked={singleFilters.fhir}
                                             />
                                         </div>
                                     </div>
                                     <div id='price-filter'>
-                                        <h4 className="fw-600 font-mont text-white fsxl-m16">Price: </h4>
+                                        <h4 className="fw-600 font-mont text-cc fsxl-m16">Price: </h4>
                                         <div className="d-flex gap-3">
                                             <ToggleSwitch label='Free' checked={singleFilters.free}
                                                 name="free" onChange={onSingleFilterChange}
@@ -276,7 +276,7 @@ export default function Main() {
             </section>
             <section className={`cards ${listView? "list": "grid"} container d-flex flex-wrap pt-3`}>
                 {
-                    cards.length ? <></> : <p className='font-lucida text-white fsxl24'>No cards found ...</p>
+                    cards.length ? <></> : <p className='font-lucida text-cc fsxl24'>No cards found ...</p>
                 }
                 {
                     cards.map((c, i) => <ApiCard key={i} data={c} listView={listView} />)
@@ -287,7 +287,7 @@ export default function Main() {
                     <img width='100%' src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/sehtafooter.png" alt="sehta-ad" />
                 </a>
             </section>
-        </main>
+        </>
     )
 }
 

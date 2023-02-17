@@ -21,7 +21,7 @@ export default function ReleaseNotes() {
             <br />
             <section className="container d-flex pt-4 mt-4" id="release-info">
                 <div className="nav nav-tabs flex-column" id="nav-tab-rel" role="tablist">
-                    <div className="text-white px-3 fw-600 fsxl20 font-mont pb-2">
+                    <div className="text-cc px-3 fw-600 fsxl20 font-mont pb-2">
                         Date
                     </div>
                     <button className="nav-link active" id="nav-2023-tab" data-bs-toggle="tab" data-bs-target="#nav-2023"

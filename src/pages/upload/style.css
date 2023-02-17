@@ -33,14 +33,14 @@ div#form-tabs .nav {
 }
 div#form-tabs  .nav-tabs {
     border-width: 1.5px;
-    border-color: #fff;
+    border-color: #ccc;
     max-width: 100vw;
 }
 div#form-tabs #nav-tab .nav-link {
     /* min-width: 33.33%;
     width: fit-content; */
     font-family: var(--font-mont);
-    color: #fff;
+    color: #ccc;
     outline: none;
     border: none;
     background-color: transparent;
@@ -57,7 +57,7 @@ div#form-tabs #nav-tab .nav-link {
     }
     div#form-tabs  .nav-tabs {
         border-width: 1.5px;
-        border-color: #fff;
+        border-color: #ccc;
         max-width: 100vw;
     }
     div#form-tabs .title {
@@ -73,7 +73,7 @@ div#form-tabs .tab-content {
     padding-bottom: 2rem;
     background-color: var(--primary-5);
     font-family: var(--font-mont);
-    color: #fff;
+    color: #ccc;
 }
 
 div#form-tabs .section-title {
@@ -83,7 +83,7 @@ div#form-tabs .section-title {
 }
 
 div#form-tabs #nav-basic .q-hold input::placeholder {
-    color: #fff;
+    color: #ccc;
 }
 
 div#form-tabs .q-grid {
@@ -114,7 +114,7 @@ div#form-tabs .q-hold .form-control,
 div#form-tabs .q-hold .form-check-input {
     background-color: var(--primary-4);
     outline: none;
-    color: #fff;
+    color: #ccc;
     transition: 0.2s ease;
 }
 div#form-tabs .q-hold .form-control {
@@ -128,7 +128,7 @@ div#form-tabs .q-hold .form-check-input:active {
     box-shadow: none;
 }
 div#form-tabs .q-hold .form-check-input {
-    border-color: #fff;
+    border-color: #ccc;
 }
 
 div#form-tabs .q-hold .form-control {
@@ -149,7 +149,7 @@ div#form-tabs .q-hold .form-control option {
 
 section#upload .form-btn {
     font-weight: 500;
-    color: #fff;
+    color: #ccc;
     border: none;
     outline: none;
     padding: 0.4rem 1.5rem;

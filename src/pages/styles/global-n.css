@@ -3,7 +3,7 @@
 @import url("https://fonts.cdnfonts.com/css/lucida-console");
 
 main {
-    background-color: #000;
+    background-color: #000B0E;
 }
 main > * {
     max-width: 1500px;
@@ -28,7 +28,7 @@ main > * {
   --mobile-u: 480px;
   --mobile-l: 320px;
   --font-mont: 'Montserrat', sans-serif;
-  --font-lucida: 'Lucida Console', sans-serif;
+  --font-lucida: 'Lucida Console',  sans-serif;
   --fsm96: 96px;
   --fsm32: 32px;
   --fsm36: 36px;
@@ -39,6 +39,10 @@ main > * {
   --fsm14: 14px;
   --fsl16: 16px;
   --fsl14: 14px;
+}
+
+a.text-cc {
+    color: #ccc !important;
 }
 
 @media (width < 1400px) {
@@ -79,6 +83,10 @@ main > * {
 .fsxl72 {
     font-size: 72px;
     line-height: 87px;
+}
+.fsxl64 {
+    font-size: 64px;
+    line-height: 78px;
 }
 .fsxl48 {
     font-size: 48px;
@@ -246,7 +254,7 @@ a {
     font-family: var(--font-mont);
     font-size: 14px;
     font-weight: 400;
-    color: #fff;
+    color: #ccc;
 }
 
 .know-form {
@@ -269,7 +277,7 @@ a {
     font-family: var(--font-mont);
     height: 40px;
     border-radius: 5px;
-    color: #fff;
+    color: #ccc;
     padding-left: 0.5rem;
     transition: 0.3s ease;
 }
@@ -277,13 +285,13 @@ a {
     border: 1.5px solid #0d9b9c;
 }
 .know-form form input:focus::placeholder {
-    color: #fff;
+    color: #ccc;
 }
 .know-form form input:not([type="submit"]) {
     background-color: rgba(13, 155, 156, 0.15);
 }
 .know-form form input:not([type="submit"])::placeholder {
-    color: #fff;
+    color: #ccc;
 }
 .know-form form input[type="submit"] {
     background-color: #059b9a;
@@ -298,7 +306,7 @@ a {
 
 .publish {
     opacity: 0.8;
-    color: #fff;
+    color: #ccc;
     display: flex;
     flex-direction: column;
     row-gap: 0.3rem;
@@ -318,9 +326,10 @@ input.input-field {
     background-color: #0D9B9C26;
     outline: none;
     border-radius: 25px;
-    color: #fff;
+    color: #ccc;
     border: 3px solid transparent;
 }
+input.input-field::placeholder,
 input.input-field:focus::placeholder {
     color: #fff;
 }
@@ -339,11 +348,22 @@ input.input-field:focus {
     background-color: var(--primary-3);
     color: #000;
 }
+.m-fit-content {
+    min-width: fit-content;
+}
 
 @media (1025px < width < 1399px) {
     .fsxl96 {
         font-size: 64px;
         line-height: 78px;
+    }
+    .fsxl64 {
+        font-size: 48px;
+        line-height: 58px;
+    }
+    .fsxl48 {
+        font-size: 40px;
+        line-height: 48px;
     }
     .fsxl32 {
         font-size: 24px;
@@ -376,6 +396,22 @@ input.input-field:focus {
         font-size: 40px;
         line-height: 49px;
     }
+    .fsxl72 {
+        font-size: 48px;
+        line-height: 58px;
+    }
+    .fsxl64 {
+        font-size: 40px;
+        line-height: 48px;
+    }
+    .fsxl48 {
+        font-size: 36px;
+        line-height: 43px;
+    }
+    .fsxl40 {
+        font-size: 32px;
+        line-height: 40px;
+    }
     .fsxl32 {
         font-size: 20px;
         line-height: 24px;
@@ -383,6 +419,10 @@ input.input-field:focus {
     .fsxl24 {
         font-size: 16px;
         line-height: 19.5px;
+    }
+    .fsxl20 {
+        font-size: 14px;
+        line-height: 17px;
     }
     .fsxl-l16 {
         font-size: 14px;
@@ -402,6 +442,14 @@ input.input-field:focus {
         font-size: 40px;
         line-height: 48.7px;
     }
+    .fsxl72 {
+        font-size: 42px;
+        line-height: 48px;
+    }
+    .fsxl64 {
+        font-size: 32px;
+        line-height: 39px;
+    }
     .fsxl32 {
         font-size: 20px;
         line-height: 24px;
@@ -412,6 +460,15 @@ input.input-field:focus {
     }
     .fsxl48{
         font-size: 40px;
+        line-height: 48px;
+    }
+    .fsxl40 {
+        font-size: 28px;
+        line-height: 32px;
+    }
+    .fsxl20 {
+        font-size: 12px;
+        line-height: 14px;
     }
 }
 
@@ -419,6 +476,18 @@ input.input-field:focus {
     .fsxl96 {
         font-size: 40px;
         line-height: 48.7px;
+    }
+    .fsxl72 {
+        font-size: 24px;
+        line-height: 29px;
+    }
+    .fsxl64 {
+        font-size: 32px;
+        line-height: 39px;
+    }
+    .fsxl40 {
+        font-size: 16px;
+        line-height: 19px;
     }
     .fsxl32 {
         font-size: 20px;
@@ -428,17 +497,24 @@ input.input-field:focus {
         font-size: 14px;
         line-height: 16px;
     }
-    .fsxl48, .fsxl40 {
+    .fsxl20 {
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .fsxl48{
         font-size: 32px;
     }
     .fsxl-l20 {
         font-size: 14px;
     }
+    .fsxl-m14 {
+        font-size: 12px;
+        line-height: 18px;
+    }
 }
 
 @media (width < 768px) {
-    .container {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
+    .s-flex-column {
+        flex-direction: column;
     }
 }

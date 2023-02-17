@@ -7,7 +7,7 @@ export default function Footer() {
             <section className='contact'>
                 <div className="container d-flex flex-wrap">
                     <div className="sub-form-hold">
-                        <h2 className="fsxl32 font-mont text-white fw-600">Subscribe !</h2>
+                        <h2 className="fsxl32 font-mont text-cc fw-600">Subscribe !</h2>
                         <br />
                         <p className="fsxl-l20 font-lucida text-cc">
                             Get early-bird guest-list for events and insights from our AI,
@@ -33,11 +33,11 @@ export default function Footer() {
                                     to respect your privacy can be found in our Privacy Policy.
                                 </label>
                             </div>
-                            <input type="submit" value="Subscribe" className='font-mont fw-600 fsxl24 py-2 bg-primary-3 text-white br-5' />
+                            <input type="submit" value="Subscribe" className='font-mont fw-600 fsxl24 py-2 bg-primary-3 text-cc br-5' />
                         </form>
                     </div>
                     <div className='address-hold' >
-                        <h2 className="fsxl32 font-mont text-white fw-600">UK</h2>
+                        <h2 className="fsxl32 font-mont text-cc fw-600">UK</h2>
                         <br />
                         <address className="font-lucida fsxl-l20 text-cc">
                             The Stanley Building <br />
@@ -93,7 +93,7 @@ export default function Footer() {
                         </a>
                     </div>
                     <div id="to-release-notes">
-                        <Link to="/release-notes" className="font-mont text-white fw-600 fsxl-l20">APIdirect release notes</Link>
+                        <Link to="/release-notes" className="font-mont text-cc fw-600 fsxl-l20">APIdirect release notes</Link>
                     </div>
                 </div>
                 <div className="container justify-content-between s-only">
@@ -106,7 +106,7 @@ export default function Footer() {
                         </Link>
                     </div>
                     <div>
-                        <Link to="/release-notes" className="font-mont text-white fw-600 fsxl-l20">APIdirect release notes</Link>
+                        <Link to="/release-notes" className="font-mont text-cc fw-600 fsxl-l20">APIdirect release notes</Link>
                     </div>
                 </div>
                 <p className="text-center fsxl-l16 text-cc font-lucida dis-text">

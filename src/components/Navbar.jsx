@@ -38,13 +38,13 @@ export default function Navbar() {
                 </div>
                 <div className="navbar-links font-mont">
                     <ul>
-                        <li className={['#/', '/', ''].includes(window.location.hash) ? "text-primary-3": "text-white"}>
+                        <li className={['#/', '/', ''].includes(window.location.hash) ? "text-primary-3": "text-cc"}>
                             <Link to='/'>Home</Link>
                         </li>
-                        <li className={/\#\/library$/.test(window.location.hash) ? "text-primary-3": "text-white"}>
+                        <li className={/\#\/library$/.test(window.location.hash) ? "text-primary-3": "text-cc"}>
                             <Link to='/library' >APIdirect Library</Link>
                         </li>
-                        <li className={window.location.hash.startsWith("#/upload") ? "text-primary-3": "text-white"}>
+                        <li className={window.location.hash.startsWith("#/upload") ? "text-primary-3": "text-cc"}>
                             <Link to='/upload'>Upload your API</Link>
                         </li>
                     </ul>

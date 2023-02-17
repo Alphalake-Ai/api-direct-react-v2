@@ -12,7 +12,7 @@ export default function ApiCard({ data }) {
             <div>
                 <div className="title-logo">
                     <div className="title">
-                        <h2 className="fw-600 font-mont text-white fsxl32">{data?.name}</h2>
+                        <h2 className="fw-600 font-mont text-cc fsxl32">{data?.name}</h2>
                         {
                             data?.isFree ? <span className='free-api'>free</span> : <></>
                         }
@@ -28,7 +28,7 @@ export default function ApiCard({ data }) {
                         }
                     </div>
                     <div className="flag" data-title={data?.fhirCompliant? "FHIR": "Non-FHIR"}>
-                        <img src="https://www.alphalake.ai/hubfs/api-connect-images/FHIR.png" style={{ filter: data?.fhirCompliant ? "none": "grayscale(1)" }} width='35px' alt="fhir" />
+                        <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/FHIR_LOGO_1702.png" style={{ filter: data?.fhirCompliant ? "none": "grayscale(1)" }} width='25px' alt="fhir" />
                     </div>
                 </div>
                 <div className="text-tags">
@@ -47,7 +47,7 @@ export default function ApiCard({ data }) {
                             <img width='35px' src="https://fs.hubspotusercontent00.net/hubfs/6637851/api-connect-images/Workato.png" alt="workato" />
                         </div>
                         <div className="flag" data-title="FHIR">
-                            <img src="https://www.alphalake.ai/hubfs/api-connect-images/FHIR.png" width='35px' alt="fhir" />
+                            <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/FHIR_LOGO_1702.png" width='35px' alt="fhir" />
                         </div>
                     </div>
                     <div className="list-tag-img">
@@ -60,7 +60,7 @@ export default function ApiCard({ data }) {
                     </div>
                 </div>
             </div>
-            <div className='info font-mont text-white fsxl16'>
+            <div className='info font-mont text-cc fsxl16'>
                 <div>
                     Current version: <span className="fw-600">{data?.currentVersion}</span>
                 </div>

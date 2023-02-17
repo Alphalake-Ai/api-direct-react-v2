@@ -17,7 +17,7 @@
 #release-info .nav .nav-link.active {
     background-color: transparent;
     border: none;
-    color: #fff;
+    color: #ccc;
     font-weight: 600;
 }
 #release-info .nav-link:hover,

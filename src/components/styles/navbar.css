@@ -6,7 +6,7 @@ nav#main-nav {
     z-index: 2;
     align-items: center;
     padding-top: 2rem;
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
     padding-left: 2rem;
     padding-right: 2rem;
     max-width: 1500px;
@@ -38,6 +38,13 @@ nav#main-nav {
     }
     nav#main-nav .container {
         width: fit-content;
+    }
+    
+}
+
+@media (width > 768px) {
+    #main-nav .logo {
+        margin-left: 3rem;
     }
 }
 
@@ -98,7 +105,7 @@ nav#main-nav {
 }
 
 .nav-toggle-btn:hover {
-    background-color: #fff;
+    background-color: #ccc;
     color: #000;
 }
 

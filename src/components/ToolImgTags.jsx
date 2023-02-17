@@ -20,7 +20,7 @@ export function Workato ({...props}) {
 }
 
 export function Soap ({...props}) {
-    return <img {...props} src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Untitled%20design%20(27).png" width="35px" />
+    return <img {...props} src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/SOAP_API_1702.png" width="35px" />
 }
 
 export default function ToolImgRenderer ({ tag, ...props }) {

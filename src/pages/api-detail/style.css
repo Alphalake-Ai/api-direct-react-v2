@@ -7,7 +7,7 @@ section#api-detail {
 section#api-detail .detail-hero {
     min-height: 60vh;
     padding-top: 3%;
-    color: #fff;
+    color: #ccc;
 }
 
 section#api-detail .detail-hero .api-logo {
@@ -15,7 +15,7 @@ section#api-detail .detail-hero .api-logo {
     height: 100px;
     overflow: hidden;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: #ccc;
     display: grid;
     place-items: center;
 }
@@ -63,7 +63,7 @@ section#resource-tab #nav-tab .nav-link {
     /* min-width: 33.33%;
     width: fit-content; */
     font-family: var(--font-mont);
-    color: #fff;
+    color: #ccc;
     outline: none;
     border: none;
     background-color: transparent;
@@ -81,7 +81,7 @@ section#resource-tab .tab-content {
     padding-bottom: 2rem;
     background-color: var(--primary-5);
     font-family: var(--font-mont);
-    color: #fff;
+    color: #ccc;
 }
 
 
@@ -145,7 +145,7 @@ section#resource-tab #nav-tab::-webkit-scrollbar {
     border: none;
     outline: none;
     background-color: var(--primary-2);
-    color: #fff;
+    color: #ccc;
     font-weight: 500;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -162,7 +162,7 @@ section#resource-tab #nav-tab::-webkit-scrollbar {
     border-radius: 20px;
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
-    color: #fff;
+    color: #ccc;
     font-family: var(--font-lucida);
 }
 
@@ -219,6 +219,10 @@ section#resource-tab #nav-tab::-webkit-scrollbar {
     }
 }
 
+#nav-tab::-webkit-scrollbar {
+    display: none;
+}
+
 @media (769px < width < 1024px) {
     
     section#resource-tab #nav-tab {
@@ -242,7 +246,7 @@ section#resource-tab #nav-tab::-webkit-scrollbar {
         overflow-x: scroll;
     }
     section#resource-tab #nav-tab .nav-link {
-        min-width: 300px;
+        width: 50%;
     }
     
     section#api-detail .detail-hero > .font-lucida,
@@ -254,5 +258,16 @@ section#resource-tab #nav-tab::-webkit-scrollbar {
     
     section#resource-tab .tab-content #nav-profile > .d-flex {
         column-gap: 1.5rem;
+    }
+
+    div.dev-res .fsxl20 {
+        font-size: 16px;
+    }
+    div.res-n-form {
+        row-gap: 2rem;
+        align-items: center;
+    }
+    div.dev-res .fsxl-m16 {
+        font-size: 14px;
     }
 }
