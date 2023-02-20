@@ -362,6 +362,15 @@ export function Spine() {
     )
 }
 
+export function Insurance() {
+    return (
+        <div className="text-tag">
+            <img className="tag-Image" alt="icon logo" src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Insurance%20Icon.png" />
+            <div className="tag-text">Insurance</div>
+        </div>
+    )
+}
+
 
 export default function TextTagRenderer({ tag }) {
     switch (tag) {
@@ -414,6 +423,7 @@ export default function TextTagRenderer({ tag }) {
         case "LOCATOR": return <Locator/>;
         case "CARE RECORD": return <CareRecord/>;
         case "CHILD HEALTH": return <ChildHealth/>;
+        case "INSURANCE": return <Insurance />;
         default: return <></>;
     }
 }
