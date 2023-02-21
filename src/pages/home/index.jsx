@@ -54,11 +54,16 @@ export default function Main() {
                 </div>
                 <div className="text-center text-cc browse">
                     <Link to='library'>
-                        <h4 className="fsxl24 fw-600 font-mont">
+                        <h4 className="fsxl20 fw-600 font-mont">
                             Browse our API Library
                             <span style={{ marginLeft: '1.5rem' }}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16">
-                                    <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <mask id="mask0_2307_4365" style={{maskType:"alpha"}} maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+                                        <rect y="24" width="24" height="24" transform="rotate(-90 0 24)" fill="#D9D9D9" />
+                                    </mask>
+                                    <g mask="url(#mask0_2307_4365)">
+                                        <path d="M15.3751 12L9.3751 18L7.9751 16.6L12.5751 12L7.9751 7.4L9.3751 6L15.3751 12Z" fill="#CCCCCC" />
+                                    </g>
                                 </svg>
                             </span>
                         </h4>

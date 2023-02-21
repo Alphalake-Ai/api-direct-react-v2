@@ -1,14 +1,14 @@
 nav#main-nav {
     width: 100%;
     position: sticky;
-    background: #000;
+    background: #000B0E;
     top: 0;
     z-index: 2;
     align-items: center;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    /* padding-left: 2rem;
+    padding-right: 2rem; */
     max-width: 1500px;
     margin: auto;
 }

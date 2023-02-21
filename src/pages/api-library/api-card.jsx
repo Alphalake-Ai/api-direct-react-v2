@@ -43,11 +43,13 @@ export default function ApiCard({ data }) {
                 </div>
                 <div className="d-flex justify-content-between">
                     <div className="list-tag-img">
-                        <div className="flag" data-title="Workato">
-                            <img width='35px' src="https://fs.hubspotusercontent00.net/hubfs/6637851/api-connect-images/Workato.png" alt="workato" />
+                        <div className="flag" data-title={data?.type}>
+                            {
+                                <ToolImgRenderer tag={data?.type.toUpperCase()} />
+                            }
                         </div>
-                        <div className="flag" data-title="FHIR">
-                            <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/FHIR_LOGO_1702.png" width='35px' alt="fhir" />
+                        <div className="flag" data-title={data?.fhirCompliant ? "FHIR" : "Non-FHIR"}>
+                            <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/FHIR_LOGO_1702.png" style={{ filter: data?.fhirCompliant ? "none" : "grayscale(1)" }} width='25px' alt="fhir" />
                         </div>
                     </div>
                     <div className="list-tag-img">

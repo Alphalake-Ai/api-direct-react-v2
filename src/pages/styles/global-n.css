@@ -331,7 +331,7 @@ input.input-field {
 }
 input.input-field::placeholder,
 input.input-field:focus::placeholder {
-    color: #fff;
+    color: #ccc;
 }
 input.input-field:focus {
     border: 3px solid var(--primary-3-25);

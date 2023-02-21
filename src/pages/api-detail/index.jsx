@@ -105,17 +105,17 @@ export default function Main() {
                     <div className="font-lucida fsxl-l16">
                         <Link to='/library'>
                             APIdirect Library 
-                        </Link> &gt; {apiData.name}
-                    </div>
+                        </Link> &gt;  <span className='pb-1' style={{ borderBottom: "1px solid #ccc" }} >{apiData.name}</span>                     </div>
                     <div className="grid-center pt-4">
                         <div className="api-logo">
                             <img src={apiData.logoUrl}
                                 alt="api logo" width='100%' />
                         </div>
+                        <br />
                         <div className="api-title">
                             <h1 className="font-mont capitalize">{apiData.name}</h1>
                         </div>
-                        <div className="text-tags filled pt-2">
+                        <div className="text-tags filled pt-4">
                             {
                                 apiData.textTags.map((t, i) => <TextTagRenderer key={i} tag={t.toUpperCase()} />)
                             }
@@ -147,7 +147,7 @@ export default function Main() {
                                     <h5 className="fsxl20 text-cc  fw-600">Enquire about this API</h5>
                                 </div>
                                 <form className='form-hold' onSubmit={onEnquireFormSubmit}>
-                                    <input type="text" name="name" className='fsxl-l14 font-mont input-field py-2 px-3' value={enquireForm.name} onChange={onEnquireFormChange} placeholder="Firstname Surname" />
+                                    <input type="text" name="name" className='fsxl-l14 font-mont input-field py-2 px-3' value={enquireForm.name} onChange={onEnquireFormChange} placeholder="Forename Surname" />
                                     <input type="email" name="email" className='fsxl-l14 font-mont input-field py-2 px-3' value={enquireForm.email} onChange={onEnquireFormChange} placeholder="Work Email" />
                                     <input type="submit" value="Submit" className='submit-btn font-mont fw-600 py-1' />
                                 </form>
@@ -248,20 +248,20 @@ export default function Main() {
             <section id="resource-tab" className="pt-2 container">
                 <nav>
                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button className="nav-link fsxl24 active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                        <button className="nav-link fsxl24 align-items-center active p-0" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
                             type="button" role="tab" aria-controls="nav-profile" aria-selected="false"
                         >
                             {
                                 apiData.fhirCompliant ?
-                                    <span>
-                                        <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/FHIR_LOGO_1702.png" alt="FHIR" width='40px' /> <span className="fw-600" style={{ color: "#FF4A00" }} >FHIR Resources</span>
+                                    <span className='d-flex gap-2 align-items-center justify-content-center'>
+                                        <img src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/FHIR_LOGO_1702.png" alt="FHIR" width='22rem' /> <span className="fw-600 pr-2" style={{ color: "#FF4A00" }} >FHIR Resources</span>
                                     </span> :
                                     <span className='fw-600'>Endpoints</span>
                             }
                         </button>
-                        <button className="nav-link fsxl24" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                        <button className="nav-link fsxl24 pb-3" id="nav-workato-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
                             type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
-                            <img src="https://fs.hubspotusercontent00.net/hubfs/6637851/api-connect-images/Workato.png" width='50px' alt="" />
+                            <img src="https://fs.hubspotusercontent00.net/hubfs/6637851/api-connect-images/Workato.png" width='40px' alt="" />
                         </button>
                     </div>
                 </nav>
@@ -337,7 +337,7 @@ export default function Main() {
                         }
 
                     </div>
-                    <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-workato-tab">
                         <div>
                             <h5 className="fsxl32 font-mont fw-600 text-cc">Triggers ({apiData.triggers.length})</h5>
                             <p className='font-lucida'>

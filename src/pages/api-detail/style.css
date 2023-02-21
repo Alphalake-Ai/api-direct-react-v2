@@ -79,6 +79,7 @@ section#resource-tab .tab-content {
     padding-left: 3rem;
     padding-right: 3rem;
     padding-bottom: 2rem;
+    border-radius: 5px;
     background-color: var(--primary-5);
     font-family: var(--font-mont);
     color: #ccc;
@@ -164,6 +165,21 @@ section#resource-tab #nav-tab::-webkit-scrollbar {
     padding-bottom: 0.3rem;
     color: #ccc;
     font-family: var(--font-lucida);
+}
+
+@media (width > 1399px) {
+    .res-n-form .dev-res {
+        transform: translateY(-30px);
+    }
+}
+
+@media (width > 1024px) {
+    #api-detail .overview-n-form,
+    .res-n-form {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    
 }
 
 @media (width < 1399.98px) {

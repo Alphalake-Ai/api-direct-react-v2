@@ -13,6 +13,7 @@ export default function Footer() {
                             Get early-bird guest-list for events and insights from our AI,
                             health tech and automation subject matter experts!
                         </p>
+                        <br />
                         <form className='subscription-form'>
                             <div className="d-flex flex-wrap align-items-center">
                                 <label className="fsxl20 font-lucida text-cc">Name</label>
@@ -22,6 +23,7 @@ export default function Footer() {
                                 <label className="fsxl20 font-lucida text-cc">Work Email</label>
                                 <input type="email" name="email" className='field py-2 font-lucida fsxl20' placeholder="Email" />
                             </div>
+                            <br />
                             <div className="d-flex" style={{ columnGap: '2rem' }}>
                                 <div>
                                     <input type="checkbox" name="marketingCom" id="marketing-com" />
@@ -112,7 +114,7 @@ export default function Footer() {
                 <p className="text-center fsxl-l16 text-cc font-lucida dis-text">
                     APIdirect is an Alphalake Technologies product, the service is built as a free service to  
                     help promote interoperability, increased standardisation, data security, user experience
-                    and knowlede in and across healthcare globally. (c) Alphalake Technologies Ltd
+                    and knowledge in and across healthcare globally. &#169; Alphalake Technologies Ltd
                 </p>
             </section>
         </footer>

@@ -36,7 +36,7 @@ export default function Navbar() {
                         alt="API Direct Logo"
                     />
                 </div>
-                <div className="navbar-links font-mont">
+                <div className="navbar-links font-mont pt-1">
                     <ul>
                         <li className={['#/', '/', ''].includes(window.location.hash) ? "text-primary-3": "text-cc"}>
                             <Link to='/'>Home</Link>

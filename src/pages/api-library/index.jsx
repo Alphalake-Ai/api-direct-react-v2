@@ -208,7 +208,7 @@ export default function Main() {
             <section className="container">
                 <div className="accordion" id='filter-accordion'>
                     <div className="accordion-item">
-                        <div className='d-flex gap-2'>
+                        <div className='d-flex gap-3'>
                             <button className="accordion-button" id='filter-button' type="button" data-bs-toggle="collapse" 
                                 data-bs-target="#collapseFilterMenu" aria-expanded="true" aria-controls="collapseFilterMenu"
                             >
@@ -261,7 +261,7 @@ export default function Main() {
                                         </div>
                                     </div>
                                     <div id='price-filter'>
-                                        <h4 className="fw-600 font-mont text-cc fsxl-m16">Price: </h4>
+                                        <h4 className="fw-600 font-mont text-cc fsxl-m16">Data: </h4>
                                         <div className="d-flex gap-3">
                                             <ToggleSwitch label='Free' checked={singleFilters.free}
                                                 name="free" onChange={onSingleFilterChange}
