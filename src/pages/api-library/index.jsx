@@ -39,7 +39,7 @@ export default function Main() {
 
     const [formats, setFormats] = useState([]);
     const [accessFilters, setAccessFilters] = useState({ partner: false, full: false, sandbox: false });
-    const [singleFilters, setSingleFilters] = useState({ free: false, fhir: false });
+    const [singleFilters, setSingleFilters] = useState({ free: false, fhir: false, subscription: false });
 
     async function onSearchFormSubmit(e) {
         e?.preventDefault();
@@ -114,6 +114,9 @@ export default function Main() {
         }
         if(singleFilters.free) {
             tempHold = tempHold.filter(c => c.isFree);
+        }
+        if(singleFilters.subscription) {
+            tempHold = tempHold.filter(c => c.subscription);
         }
         setCards(tempHold);
     }, [selectedTags, formats, accessFilters, singleFilters])
@@ -265,6 +268,9 @@ export default function Main() {
                                         <div className="d-flex gap-3">
                                             <ToggleSwitch label='Free' checked={singleFilters.free}
                                                 name="free" onChange={onSingleFilterChange}
+                                            />
+                                            <ToggleSwitch label='Subscription apply' checked={singleFilters.subscription}
+                                                name="subscription" onChange={onSingleFilterChange}
                                             />
                                         </div>
                                     </div>
