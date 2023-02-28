@@ -6,16 +6,19 @@ import "./style.css";
 import axios from 'axios';
 import { baseUrl } from '../../config/constants';
 import { FilterIcon, SearchIcon } from '../../components/Icons';
-import {  GridIcon,  ListIcon } from '../../components/TextTags';
+import {  AppIcon, GridIcon,  ListIcon, NationalSystemIcon, PatientsIcon, SecondaryCareIcon } from '../../components/TextTags';
 import { EhrIcon, HospitalIcon, CliniciansIcon } from '../../components/TextTags';
 // import { Australia, Europe, India, Italy, UK, USA } from '../../components/Flags';
 import ToggleSwitch from '../../components/ToggleSwitch';
 import ApiCard from './api-card';
-
 const tags = [
     { title: "EHR", tag: "EHR", icon: <EhrIcon /> },
     { title: "Hospital", tag: "Hospital", icon: <HospitalIcon /> },
     { title: "Clinicians", tag: "Clinician", icon: <CliniciansIcon /> },
+    { title: "National System", tag: "NATIONAL SYSTEM", icon: <NationalSystemIcon /> },
+    { title: "Patient", tag: "Patient", icon: <PatientsIcon /> },
+    { title: "App", tag: "App", icon: <AppIcon /> },
+    { title: "Secondary Care", tag: "SecondaryCare", icon: <SecondaryCareIcon /> }
 ]
 
 function matchAtleastOne(arr1 = [], arr2 = []) {
@@ -252,7 +255,7 @@ export default function Main() {
                                         <FormatSelector setSelected={setFormats} selected={formats} />
                                     </div>
                                     <div id='access-filter'>
-                                        <h4 className="fw-600 font-mont text-cc fsxl-m16">Access: </h4>
+                                        <h4 className="fw-600 font-mont text-cc fsxl-m16">Integration Access: </h4>
                                         <AccessSelector setSelected={setAccessFilters} selected={accessFilters} />
                                     </div>
                                     <div id='fhir-filter'>
@@ -375,8 +378,8 @@ function AccessSelector({setSelected, selected}) {
     return (
         <div className="d-flex gap-3">
             <ToggleSwitch label="Partner-Only" name="partner" checked={selected.partner} onChange={handleSelectChange} />
-            <ToggleSwitch label="Fully Open" name="full" onChange={handleSelectChange} checked={selected.full} />
-            <ToggleSwitch label="Secure Sandbox" name="sandbox" onChange={handleSelectChange} checked={selected.sandbox} />
+            <ToggleSwitch label="Public" name="full" onChange={handleSelectChange} checked={selected.full} />
+            {/* <ToggleSwitch label="Secure Sandbox" name="sandbox" onChange={handleSelectChange} checked={selected.sandbox} /> */}
         </div>
     )
 }

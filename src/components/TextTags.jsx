@@ -14,8 +14,12 @@ export function NationalSystems() {
         <div className="text-tag">
             <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/api-connect-images/National-System-icon.png" />
             <div className="tag-text">NationalSystem</div>
-        </div>
+        </div> 
     )
+}
+
+export function NationalSystemIcon () {
+    return <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20"><path d="M273 936v-73l47-47H140q-24 0-42-18t-18-42V276q0-24 18-42t42-18h680q24 0 42 18t18 42v480q0 24-18 42t-42 18H640l48 47v73H273ZM140 756h680V276H140v480Zm0 0V276v480Z"/></svg>    
 }
 
 export function EhrIcon() {
@@ -110,6 +114,11 @@ export function App() {
     )
 }
 
+export function AppIcon () {
+    return <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20">
+        <path d="M226 896q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19ZM226 642q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19ZM226 388q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Zm254 0q-28 0-47-19t-19-47q0-28 19-47t47-19q28 0 47 19t19 47q0 28-19 47t-47 19Z"/>
+        </svg>
+}
 
 export function EMR() {
     return (
@@ -140,6 +149,10 @@ export function SecondaryCare() {
             <div className="tag-text">SecondaryCare</div>
         </div>
     )
+}
+
+export function SecondaryCareIcon () {
+    return <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20"><path d="M290 216q57 0 105.5 27t84.5 78q42-54 89-79.5T670 216q89 0 149.5 60.5T880 427q0 15-1.5 29.5T873 486h-62q5-15 7-29.5t2-29.5q0-66-42-108.5T670 276q-51 0-95 31.5T504 396h-49q-26-56-70-88t-95-32q-66 0-108 42.5T140 427q0 15 2 29.5t7 29.5H87q-4-15-5.5-29.5T80 427q0-90 60.5-150.5T290 216Zm-98 450h78q38 42 89.5 91.5T480 870q69-63 120-112.5t89-91.5h79q-42 49-102 108.5T521 912l-41 37-41-37q-85-78-145-137.5T192 666Zm250 60q9 0 16-5.5t10-14.5l61-181 46 68q5 6 11 9.5t14 3.5h310v-60H617l-72-106q-5-7-12-10t-15-3q-9 0-16.5 5.5T491 447l-60 181-47-69q-5-6-10.5-9.5T360 546H50v60h292l72 107q5 7 12.5 10t15.5 3Zm38-153Z"/></svg>
 }
 
 export function PrimaryCare() {
@@ -178,6 +191,10 @@ export function Patients() {
             <div className="tag-text">Patients</div>
         </div>
     )
+}
+
+export function PatientsIcon () {
+    return <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20"><path d="M480 575q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42ZM160 896v-94q0-38 19-65t49-41q67-30 128.5-45T480 636q62 0 123 15.5t127.921 44.694q31.301 14.126 50.19 40.966Q800 764 800 802v94H160Zm60-60h520v-34q0-16-9.5-30.5T707 750q-64-31-117-42.5T480 696q-57 0-111 11.5T252 750q-14 7-23 21.5t-9 30.5v34Zm260-321q39 0 64.5-25.5T570 425q0-39-25.5-64.5T480 335q-39 0-64.5 25.5T390 425q0 39 25.5 64.5T480 515Zm0-90Zm0 411Z"/></svg>    
 }
 
 export function CommunityCare() {

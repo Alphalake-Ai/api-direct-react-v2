@@ -30,6 +30,7 @@ div.like-form {
     background-color: #001A21;
     padding: 3rem 2rem;
     width: 380px;
+    border-radius: 8px;
 }
 div.like-form .form-hold input{
     padding-top: 0.7rem;
@@ -48,8 +49,7 @@ div.like-form .form-hold input{
     column-gap: 0.5rem;
     width: fit-content;
     padding: 0.5rem 1rem;    
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-radius: 5px;
 }
 #view-switch {
     background-color: rgba(0, 26, 33, 1);
@@ -59,8 +59,7 @@ div.like-form .form-hold input{
     justify-content: space-between;
     display: flex;
     padding: 0.5rem 1rem;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;    
+    border-radius: 5px; 
 }
 
 #filter-button::after{
