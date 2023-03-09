@@ -52,6 +52,10 @@ div#form-tabs #nav-tab .nav-link {
     font-weight: 600;
 }
 
+a.contact {
+    text-align: center;
+}
+
 @media (width > 1299px) {
     #upload .img-content {
         transform: translateX(-5rem);

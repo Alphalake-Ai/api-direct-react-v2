@@ -212,9 +212,9 @@ export default function Main() {
                         Don’t have all the information
                         to hand, or just need help?
                       </p>
-                      <button className='contact'>
+                      <a href='https://www.alphalake.ai/contact-us-page' target="_blank" className='contact'>
                         Contact us
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
