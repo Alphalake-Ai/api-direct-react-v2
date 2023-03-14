@@ -224,7 +224,7 @@ export default function Main() {
                             <div id='search-box'>
                                 <SearchIcon/>
                                 <input type="text" value={searchQuery} onChange={onSearchQueryChange} 
-                                    name="search" placeholder={`Search our ${allCards.length} APIs`} 
+                                    name="search" placeholder={`Search ${allCards.length} APIs`} 
                                 />
                             </div>
                             <button id='view-switch' onClick={() => setListView(prev => !prev)}>
