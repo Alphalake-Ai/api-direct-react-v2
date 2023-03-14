@@ -13,7 +13,7 @@ export function NationalSystems() {
     return (
         <div className="text-tag">
             <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/api-connect-images/National-System-icon.png" />
-            <div className="tag-text">NationalSystem</div>
+            <div className="tag-text">National System</div>
         </div> 
     )
 }
@@ -100,7 +100,7 @@ export function IntegratedCares() {
     return (
         <div className="text-tag">
             <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/API%20Direct%20Logo/IntegratedCares.png" />
-            <div className="tag-text">IntegratedCare</div>
+            <div className="tag-text">Integrated Care</div>
         </div>
     )
 }
@@ -109,7 +109,7 @@ export function App() {
     return (
         <div className="text-tag">
             <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/api-connect-images/App-icon.png" />
-            <div className="tag-text">APP</div>
+            <div className="tag-text">App</div>
         </div>
     )
 }
@@ -146,7 +146,7 @@ export function SecondaryCare() {
     return (
         <div className="text-tag">
             <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/api-connect-images/Secondary-Care-icon.png" />
-            <div className="tag-text">SecondaryCare</div>
+            <div className="tag-text">Secondary Care</div>
         </div>
     )
 }
@@ -159,7 +159,7 @@ export function PrimaryCare() {
     return (
         <div className="text-tag">
             <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/api-connect-images/Primary-Care-icon.png" />
-            <div className="tag-text">PrimaryCare</div>
+            <div className="tag-text">Primary Care</div>
         </div>
     )
 }
@@ -201,7 +201,7 @@ export function CommunityCare() {
     return (
         <div className="text-tag">
             <img className="tag-Image" alt="icon logo" src="https://www.alphalake.ai/hubfs/api-connect-images/Community-Care-icon.png" />
-            <div className="tag-text">CommunityCare</div>
+            <div className="tag-text">Community Care</div>
         </div>
     )
 }
