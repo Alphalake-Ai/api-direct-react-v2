@@ -3,6 +3,7 @@ import { Routes as Switch, Route } from "react-router-dom"
 import Layout from "./components/Layout";
 import ApiDetail from "./pages/api-detail/index.jsx";
 import Library from "./pages/api-library/index.jsx";
+import ContactFaq from "./pages/contact-faq";
 import Home from "./pages/home/index.jsx";
 import ReleaseNotes from "./pages/release-notes";
 import Upload from "./pages/upload/index.jsx";
@@ -14,6 +15,7 @@ export default function App() {
       <Route exact path="/library" element={<Layout><Library/></Layout>} />
       <Route path="/library/:api" element={<Layout><ApiDetail /></Layout>} />
       <Route path="/release-notes" element={<Layout><ReleaseNotes/></Layout>} />
+      <Route path="/contact-faq" element={<Layout><ContactFaq/></Layout>} />
       <Route path="/" element={<Layout><Home /></Layout>} />
     </Switch>
   );

@@ -4,6 +4,7 @@ import "./style.css";
 import { resources } from "./config.js";
 import { baseUrl } from "../../config/constants.js";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 let emptyResListMap = {};
 function initResouceMap() {
@@ -212,9 +213,9 @@ export default function Main() {
                         Don’t have all the information
                         to hand, or just need help?
                       </p>
-                      <a href='https://www.alphalake.ai/contact-us-page' target="_blank" className='contact'>
+                      <Link to="/contact-faq" className='contact'>
                         Contact us
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
