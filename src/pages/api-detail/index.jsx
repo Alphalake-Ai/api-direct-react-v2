@@ -170,13 +170,17 @@ export default function Main() {
                                         <h6 className="fsxl-m16 fw-600 o-08 text-cc font-mont">
                                             Doc Tooling:
                                         </h6>
-                                        <ToolImgRenderer tag={apiData.docTooling} />
+                                        <a href={apiData?.githubLink} target="_blank" style={{ pointerEvents: apiData?.githubLink ? "inherit": "none" }} >
+                                            <ToolImgRenderer tag={apiData.docTooling} style={{ filter: apiData?.githubLink ? "none": "grayscale(1)" }} />
+                                        </a>
                                     </div>
                                     <div className="w-50">
                                         <h6 className="fsxl-m16 fw-600 o-08 text-cc font-mont">
                                             Wrapper:
                                         </h6>
-                                        <ToolImgRenderer tag={apiData.wrapper} />
+                                        <a href={apiData?.swaggerLink} target="_blank" style={{ pointerEvents: apiData?.swaggerLink ? "inherit": "none" }} >
+                                            <ToolImgRenderer tag={apiData.wrapper} style={{ filter: apiData?.swaggerLink ? "none": "grayscale(1)" }} />
+                                        </a>
                                     </div>
                                 </div>
                             </div>

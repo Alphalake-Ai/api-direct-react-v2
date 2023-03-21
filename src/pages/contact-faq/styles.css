@@ -1,0 +1,354 @@
+.contact-box{
+    padding: 30px 90px;
+    color: #fff;
+}
+
+.flexbox {
+    display: flex;
+    margin-top: 36px;
+    gap: 0 5rem;
+    width: 100%;
+}
+
+.whi-col{
+    color: #fff;
+    font-family: var(--font-mont);
+}
+.fnt-45{
+  font-size: var(--fsm45);
+}
+.fnt-40{
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 40px;
+    margin-top: 30px;
+    margin-bottom: 55px;
+}
+.fnt-20{
+    font-size: var(--fsm20);
+    font-weight: 600;
+    line-height: 24px;
+}
+.fnt-18{
+    font-size: var(--fsm18);
+    background-color: #000b0e;
+}
+
+.fnt-16{
+    font-size: var(--fsm16);
+    line-height: 20px;
+}
+.chat, .contact_no {
+    color: #059b9a;
+}
+
+.rhs img {
+    margin-right: 16px;
+   
+}
+.bg-color-f{
+    background-color: var(--bg-color);
+}
+
+.faq_box .lhs {
+    width: 64%;
+}
+
+.faq-container{
+    width: 100%;
+}
+.accordion-body{
+    font-family: var(--font-mont);
+    padding: 0.6rem 0.4rem;
+    font-size: 1rem;
+}
+
+
+.accordion-button{
+    background-color: var(--bg-color);
+    color: #fff;
+    text-align: left;
+    font-family: var(--font-mont);
+    font-size: var(--fsm18);
+}
+.accordion-button:not(.collapsed){
+    background-color: var(--bg-color);
+    color: #fff;
+}
+
+
+.accordion-button:focus{
+    box-shadow: none;
+
+}
+
+.accordion-button{
+    font-size: var(--fsm20);
+    line-height: 20px;
+    padding-left: 0;
+}
+
+form {
+    margin: 0;
+}
+
+.form-title {
+    display: none;
+}
+
+.hs-form label {
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+.hs-input {
+    background-color: transparent !important;
+    font-family: 'Montserrat';
+    border-bottom: 2px solid #FFFFFF;
+    color: #fff !important;
+    padding: 9px 4px !important;
+    font-family: 'Montserrat' !important;
+}
+
+
+
+
+.call_us {
+    margin-bottom: 59px;
+}
+
+.contact_no,
+.chat {
+    color: #059B9A;
+}
+
+.description {
+    padding-bottom: 16px;
+}
+
+.faq_box .lhs {
+    width: 519px;
+}
+
+.faq-container p {
+    color: #059b9a;
+    font-family: 'Montserrat';
+    font-size: 1rem;
+    line-height: 20px;
+}
+
+.collapsible {
+    background-color: #000B0E;
+    color: #fff;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.2rem;
+}
+
+
+
+.collapsible:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+#libary_con_form {
+    margin-top: 10px;
+}
+
+label {
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 24px;
+    padding: 0.5rem 0;
+}
+
+.email {
+    float: right;
+    width: 45%;
+}
+
+.contact-box input[type='text'],
+.contact-box input[type='email'],
+.contact-box select,
+.contact-box textarea {
+    background: none;
+    border: none;
+    border-bottom: solid 2px rgba(202, 213, 226, 1.0);
+    color: #818181;
+    font-size: 1.000em;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin: 1rem 0;
+    padding: 0 0 0.875em 0;
+    text-transform: uppercase;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+input[type='text']:focus,
+[type='email']:focus,
+textarea:focus {
+    outline: none;
+    padding: 0 0 0.875em 0;
+}
+
+.message {
+    float: none;
+}
+
+.name {
+    float: left;
+    width: 45%;
+}
+
+select {
+    background: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-down-32.png') no-repeat right;
+    outline: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.subject {
+    width: 100%;
+}
+
+.telephone {
+    width: 100%;
+}
+
+textarea {
+    line-height: 150%;
+    resize: none;
+    width: 100%;
+}
+
+::-webkit-input-placeholder {
+    color: #818181;
+}
+
+:-moz-placeholder {
+    color: #818181;
+    opacity: 1;
+}
+
+::-moz-placeholder {
+    color: #818181;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: #818181;
+}
+
+#form_button {
+    padding: 15px 25px;
+}
+
+#form_button {
+    background: none;
+    border: solid 2px #474544;
+    color: #818181;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    outline: none;
+    padding: 10px 25px;
+    font-family: 'Montserrat';
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+#form_button:hover {
+    background: var(--primary-3);
+    color: #F2F3EB;
+}
+
+@media only screen and (max-width: 768px) {
+    .contact-box {
+       padding: 0 30px;
+    }
+    
+    .fnt-45 {
+        font-size: 2rem;
+    }
+
+    .flexbox {
+        flex-direction: column;
+    }
+
+    .fnt-20{
+        font-size: 1rem;
+    }
+
+    .fnt-16 {
+        font-size: 0.8rem;
+    }
+
+    .rhs {
+        margin-top: 30px;
+        display: flex;
+        gap: 0 5rem;
+    }
+
+    .faq_box .lhs {
+        width: 100%
+    }
+    .accordion-button{
+        font-size: var(--fsl16);
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .fnt-45 {
+        font-size: 1.5rem !important;
+    }
+    .name,.email{
+        float: none;
+        width: 100%;
+    }
+    .rhs{
+        flex-direction: column;
+    }
+
+}
