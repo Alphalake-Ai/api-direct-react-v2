@@ -1,6 +1,29 @@
+import { useState } from "react";
+import axios from "axios";
 import "./styles.css";
+import { baseUrl } from "../../config/constants";
 
+const defaultContactForm = { name: "", email: "", subject: "", message: "" };
 export default function ContactFaq() {
+
+  const [formData, setFormData] = useState(defaultContactForm)
+  function onFormDataChange({ target }) {
+    const { name, value } = target;
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  async function onContactFormSubmit(e) {
+    e.preventDefault();
+    try {
+      await axios.post(baseUrl + "/contact", formData);
+      alert("Query registered. We'll contact you soon.");
+      setFormData(defaultContactForm);
+    } catch (error) {
+      console.log(error);
+      alert("Oops! An error occured. Please try again after sometime.");
+    }
+  }
+
   return <>
     <div className="contact-box">
       <h1 className="whi-col fnt-45">Get in touch</h1>
@@ -14,27 +37,27 @@ export default function ContactFaq() {
           </p>
           <div className="form-box">
             <div class="form_holder">
-              <form action="" id="libary_con_form">
+              <form id="libary_con_form" onSubmit={onContactFormSubmit}>
                 <div class="name">
                   <label for="name">Name</label>
-                  <input type="text" placeholder="My name is" name="name" id="name_input" required />
+                  <input onChange={onFormDataChange} type="text" value={formData.name} placeholder="My name is" name="name" id="name_input" required />
                 </div>
                 <div class="email">
                   <label for="email">Email</label>
-                  <input type="email" placeholder="My e-mail is" name="email" id="email_input" required />
+                  <input onChange={onFormDataChange} type="email" value={formData.email} placeholder="My e-mail is" name="email" id="email_input" required />
                 </div>
                 <div class="subject">
                   <label for="subject"></label>
-                  <select placeholder="Subject line" name="subject" id="subject_input">
-                    <option disabled hidden selected>Subject line</option>
-                    <option>I'd like to start a project</option>
-                    <option>I'd like to ask a question</option>
-                    <option>I'd like to make a proposal</option>
+                  <select onChange={onFormDataChange} placeholder="Subject line" value={formData.subject} name="subject" id="subject_input">
+                    <option value="" disabled>Select</option>
+                    <option value="START A PROJECT">I'd like to start a project</option>
+                    <option value="ASK A QUESTION">I'd like to ask a question</option>
+                    <option value="MAKE A PROPOSAL">I'd like to make a proposal</option>
                   </select>
                 </div>
                 <div class="message">
                   <label for="message">Message</label>
-                  <textarea name="message" placeholder="I'd like to chat about" id="message_input" cols="30"
+                  <textarea onChange={onFormDataChange} name="message" value={formData.message} required placeholder="I'd like to chat about" id="message_input" cols="30"
                     rows="3"></textarea>
                 </div>
                 <div class="submit">
@@ -51,7 +74,10 @@ export default function ContactFaq() {
               problem! Feel free to contact us by finding our number below.
             </p>
             <p className='contact_no'><span><img
-              src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Alphalake_Ai-April-2020/Icons/call.png" /></span>9028038240
+              src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Alphalake_Ai-April-2020/Icons/call.png" /></span><a href="tel:+919833165272">+91 9833165272</a>
+            </p>
+            <p className='contact_no'><span><img
+              src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Alphalake_Ai-April-2020/Icons/call.png" /></span><a href="tel:+4402032890014">+44 020 3289 0014</a>
             </p>
           </div>
           {/* <div className='live_chat'>

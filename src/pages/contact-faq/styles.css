@@ -162,7 +162,7 @@ form {
     margin-left: 5px;
 }
 
-.active:after {
+.contact-box .active:after {
     content: "\2212";
 }
 
@@ -177,7 +177,7 @@ form {
     margin-top: 10px;
 }
 
-label {
+.contact-box label {
     color: #fff;
     font-family: Montserrat;
     font-size: 1.25rem;
@@ -217,10 +217,9 @@ label {
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
-
-input[type='text']:focus,
-[type='email']:focus,
-textarea:focus {
+.contact-box input[type='text']:focus,
+.contact-box [type='email']:focus,
+.contact-box textarea:focus {
     outline: none;
     padding: 0 0 0.875em 0;
 }

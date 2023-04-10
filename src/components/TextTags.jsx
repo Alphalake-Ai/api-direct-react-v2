@@ -416,8 +416,10 @@ export default function TextTagRenderer({ tag }) {
         case "PLATFORM": return <Platform/>;
         case "PATIENT": return <Patients/>;
         case "COMMUNITYCARE": return <CommunityCare/>;
+        case "COMMUNITY CARE": return <CommunityCare/>;
         case "MEDICARE": return <Medicare/>;
         case "MEDICALIMAGING": return <MedicalImaging/>;
+        case "MEDICAL IMAGING": return <MedicalImaging/>;
         case "DIAGNOSTICS": return <Diagnostics/>;
         case "DIAGNOSTIC": return <Diagnostics/>;
         case "FITNESS": return <Fitness/>;
@@ -425,6 +427,7 @@ export default function TextTagRenderer({ tag }) {
         case "DATA-ANALYTICS": return <DataAnalytics/>;
         case "DATA & ANALYTICS": return <DataAnalytics/>;
         case "DATA ANALYTICS": return <DataAnalytics/>;
+        case "ANALYTICS": return <DataAnalytics/>;
         case "TELEHEALTH": return <Telehealth/>;
         case "APPOINTMENT": return <Appointment/>;
         case "PHARMACY": return <Pharmacy/>;
@@ -432,6 +435,7 @@ export default function TextTagRenderer({ tag }) {
         case "RESEARCH": return <Research/>;
         case "SOCIAL CARE": return <SocialCare/>;
         case "SPINE": return <Spine/>;
+        case "NHS SPINE": return <Spine/>;
         case "MEDICENE": return <Medicene/>;
         case "REFERENCE": return <Reference/>;
         case "HEALTH DATA": return <HealthData/>;

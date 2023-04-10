@@ -160,11 +160,17 @@ section#resource-tab #nav-tab::-webkit-scrollbar {
     background-color: var(--primary-4);
     padding-left: 1rem;
     padding-right: 1rem;
-    border-radius: 20px;
+    border-radius: 5px;
+    width: fit-content;
+    margin-bottom: 0.8rem;
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
     color: #ccc;
     font-family: var(--font-lucida);
+}
+
+#nav-contact .like-form {
+    width: 100%;
 }
 
 @media (width > 1399px) {
@@ -179,7 +185,10 @@ section#resource-tab #nav-tab::-webkit-scrollbar {
         padding-left: 2rem;
         padding-right: 2rem;
     }
-    
+    #nav-contact .like-form {
+        padding-left: 4rem;
+        padding-right: 0;
+    }
 }
 
 @media (width < 1399.98px) {

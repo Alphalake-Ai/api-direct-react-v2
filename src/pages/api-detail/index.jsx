@@ -68,6 +68,7 @@ export default function Main() {
 
     const scrollRef = useRef();
     const executeScroll = () => scrollRef.current.scrollIntoView();
+    // const executeScroll = () => {};
 
     useEffect(() => {
         if (!params.api) return;
@@ -92,6 +93,32 @@ export default function Main() {
             e.preventDefault();
             await axios.post(baseUrl + '/enquire', { ...enquireForm, apiId: id });
             alert("Enquiry request registered. We'll contact you soon.");
+        } catch (error) {
+            console.log(error);
+            alert("Oops! An error occured. Please try again after sometime.");
+        }
+    }
+
+    const [fullView, setFullView] = useState(false);
+    function actionListFilter (item, index) {
+        if(fullView) {
+            return true
+        } else {
+            return index < 10;
+        }
+    }
+
+    const [connectorForm, setConnectorForm] = useState({ name: "", email: ""})
+    function onConnectorFormChange({ target }) {
+        const { name, value } = target;
+        setConnectorForm(prev => ({ ...prev, [name]: value }))
+    }
+
+    async function onConnectorFormSubmit(e) {
+        try {
+            e.preventDefault();
+            await axios.post(baseUrl + '/connector', { ...connectorForm, apiId: id });
+            alert("Thanks for the submission. We'll contact you soon.");
         } catch (error) {
             console.log(error);
             alert("Oops! An error occured. Please try again after sometime.");
@@ -270,45 +297,13 @@ export default function Main() {
                     </div>
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
-                    {/* <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        {
-                            apiData.fhirCompliant ? "No Endpoints Available" :
-                                <div className="d-flex gap-2 flex-wrap">
-                                    {
-                                        apiData.nonFhirEndpoints instanceof Array ?
-                                            apiData.nonFhirEndpoints.map((e, i) => (
-                                                <div key={i} className="endpoint-tag">{e}</div>
-                                            )) :
-                                            apiData.nonFhirEndpoints.split(",").map((e, i) => (
-                                                <div key={i} className="endpoint-tag">{e}</div>
-                                            ))
-                                    }
-                                </div>
-                        }
-                    </div> */}
+                    
                     <div className="tab-pane show active fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                         {
                             apiData.fhirCompliant ?
                                 <div className="d-flex flex-wrap justify-content-center">
                                     {
-                                        // resources.map((pr, id) => (
-                                        //     <div className="rs-card-wrap" key={id}>
-                                        //         {
-                                        //             pr.map((r, i) => (
-                                        //                 <div className="rs-card" key={i}>
-                                        //                     <div className="header">
-                                        //                         {r.title}
-                                        //                     </div>
-                                        //                     <ul>
-                                        //                         {
-                                        //                             r.items.map((it, idx) => <ul key={idx}>{it}</ul>)
-                                        //                         }
-                                        //                     </ul>
-                                        //                 </div>
-                                        //             ))
-                                        //         }
-                                        //     </div>
-                                        // ))
+                                        
                                         apiData.resources.map((r, i) => (
                                             <div className="rs-card" key={i}>
                                                 <div className="header">
@@ -342,36 +337,77 @@ export default function Main() {
 
                     </div>
                     <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-workato-tab">
-                        <div>
-                            <h5 className="fsxl32 font-mont fw-600 text-cc">Triggers ({apiData.triggers.length})</h5>
-                            <p className='font-lucida'>
-                                Use these in your "recipe" to make an event happen elsewhere,
-                                whether in Alphabot for Teams or any other connected system (Actions).
-                            </p>
-                            <div className="d-flex flex-wrap gap-2">
-                                {
-                                    apiData.triggers.map((t, i) => (
-                                        <div key={i} className="endpoint-tag">{t}</div>
-                                    ))
-                                }
-                            </div>
-                        </div>
-                        <br />
-                        <div>
-                            <h5 className="fsxl32 font-mont fw-600 text-cc">Actions ({apiData.actions.length})</h5>
-                            <p className='font-lucida'>
-                                Insert these as a step in your "recipe" and they will happen
-                                automatically following a Trigger from elsewhere in Cerner or
-                                any other System...
-                            </p>
-                            <div className="d-flex flex-wrap gap-2">
-                                {
-                                    apiData.actions.map((t, i) => (
-                                        <div key={i} className="endpoint-tag">{t}</div>
-                                    ))
-                                }
-                            </div>
-                        </div>
+                        {
+                            apiData.actions.length || apiData.triggers.length ?
+                                <div className="d-flex flex-wrap justify-content-around">
+                                    <div className='col-lg-5 col-sm-12'>
+                                        <h5 className="fsxl32 font-mont fw-600 text-cc">Triggers ({apiData.triggers.length})</h5>
+                                        <p className='font-lucida'>
+                                            Use these in your "recipe" to make an event happen elsewhere,
+                                            whether in Alphabot for Teams or any other connected system (Actions).
+                                        </p>
+                                        <div>
+                                            {
+                                                apiData.triggers.map((t, i) => (
+                                                    <div key={i} className="endpoint-tag">{t}</div>
+                                                ))
+                                            }
+                                        </div>
+                                    </div>
+                                    <div className='col-lg-5 col-sm-12'>
+                                        <h5 className="fsxl32 font-mont fw-600 text-cc">Actions ({apiData.actions.length})</h5>
+                                        <p className='font-lucida'>
+                                            Insert these as a step in your "recipe" and they will happen
+                                            automatically following a Trigger from elsewhere in Cerner or
+                                            any other System...
+                                        </p>
+                                        <div>
+                                            {
+                                                apiData.actions.filter(actionListFilter).map((t, i) => (
+                                                    <div key={i} className="endpoint-tag">{t}</div>
+                                                ))
+                                            }
+                                        </div>
+                                        {
+                                            apiData.actions.length > 10 ?
+                                                <button className="t-btn fsxl-m14 text-primary-2" onClick={() => setFullView(prev => !prev)}>{fullView ? "Collapse" : `Show all (${apiData.actions.length})`}</button>
+                                                : <></>
+                                        }
+                                    </div>
+                                </div>
+                                :
+                                <div>
+                                    <div className="mx-auto col-lg-10 col-12 pt-3 text-center font-lucida fsxl-l14">
+                                    <p>
+                                        This API does not yet have a Nocode Automation Connector.
+                                    </p> 
+                                    <p>
+                                        If you are the owner of this healthcare API or a consumer who would 
+                                        like a Nocode Connector to be built, you can request this from Alpahalake Ai here.
+                                    </p>
+                                    </div>
+                                    <div className="d-flex flex-wrap justify-content-center">
+                                        <div className="col-12 col-lg-4" style={{ paddingTop: "3rem"}}>
+                                            <p className="fsxl-l12 font-lucida text-primary-2">
+                                                Just fill in the contact form and we will
+                                                be in touch soon!
+                                            </p>
+                                        </div>
+                                        <div className="col-12 col-sm-10 col-lg-5">
+                                            <div className='like-form'>
+                                                <div className="font-mont">
+                                                    <form className='form-hold' onSubmit={onConnectorFormSubmit}>
+                                                        <input type="text" name="name" className='fsxl-l14 font-mont input-field py-2 px-3' value={connectorForm.name} onChange={onConnectorFormChange} placeholder="Forename Surname" />
+                                                        <input type="email" name="email" className='fsxl-l14 font-mont input-field py-2 px-3' value={connectorForm.email} onChange={onConnectorFormChange} placeholder="Work Email" />
+                                                        <input type="submit" value="Submit" className='submit-btn font-mont fw-600 py-1' />
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        }
+
                     </div>
                 </div>
             </section>

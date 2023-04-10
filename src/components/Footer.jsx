@@ -1,7 +1,35 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { baseUrl } from "../config/constants";
 import "./styles/footer.css";
 
+const defaultFooterForm = { name: "", email: "", consent: false };
+
 export default function Footer() {
+
+    const [formData, setFormData] = useState(defaultFooterForm);
+    function onFooterDataChange ({ target }) {
+        const { name, value } = target;
+        if(name === "consent") {
+            setFormData(prev => ({...prev, consent: !prev.consent}))
+        } else {
+            setFormData(prev => ({ ...prev, [name]: value }))
+        }
+    } 
+
+    async function onFooterFormSubmit(e) {
+        e.preventDefault();
+        try {
+          await axios.post(baseUrl + "/subscribe", formData);
+          alert("Subscribed");
+          setFormData(defaultFooterForm);
+        } catch (error) {
+          console.log(error);
+          alert("Oops! An error occured. Please try again after sometime.");
+        }
+      }
+
     return (
         <footer>
             <section className='contact'>
@@ -14,25 +42,30 @@ export default function Footer() {
                             health tech and automation subject matter experts!
                         </p>
                         <br />
-                        <form className='subscription-form'>
+                        <form className='subscription-form' onSubmit={onFooterFormSubmit}>
                             <div className="d-flex flex-wrap align-items-center">
                                 <label className="fsxl20 font-lucida text-cc">Name</label>
-                                <input type="text" name="name" className='field py-2 font-lucida fsxl20' placeholder="Forename Surname" />
+                                <input type="text" name="name" className='field py-2 font-lucida fsxl20' placeholder="Forename Surname" 
+                                    checked={formData.name} onChange={onFooterDataChange}
+                                />
                             </div>
                             <div className="d-flex flex-wrap align-items-center">
                                 <label className="fsxl20 font-lucida text-cc">Work Email</label>
-                                <input type="email" name="email" className='field py-2 font-lucida fsxl20' placeholder="Email" />
+                                <input type="email" name="email" className='field py-2 font-lucida fsxl20' placeholder="Email" 
+                                    checked={formData.email} onChange={onFooterDataChange}
+                                />
                             </div>
                             <br />
                             <div className="d-flex" style={{ columnGap: '2rem' }}>
                                 <div>
-                                    <input type="checkbox" name="marketingCom" id="marketing-com" />
+                                    <input type="checkbox" name="consent" checked={formData.consent} onChange={onFooterDataChange} id="marketing-com" />
                                 </div>
                                 <label className='font-lucida text-cc check-label' htmlFor='marketing-com'>
                                     I'd like to receive marketing communications from Alphalake Ai
-                                    regarding industry news, our services and events.
+                                    regarding industry news, services and events.
+                                    <br />
                                     Information on our privacy practices, and our commitment
-                                    to respect your privacy can be found in our Privacy Policy.
+                                    to respect your privacy can be found in our <a target="_blank" href="https://www.alphalake.ai/privacy-policy" className="text-primary-2"> Privacy Policy.</a>
                                 </label>
                             </div>
                             <input type="submit" value="Subscribe" className='font-mont fw-600 fsxl24 py-2 bg-primary-3 text-cc br-5' />
@@ -60,7 +93,7 @@ export default function Footer() {
                             />
                         </Link>
                     </div>
-                    <div className="d-flex gap-3 social-media">
+                    {/* <div className="d-flex gap-3 social-media">
                         <a href="#" target="_blank">
                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15.6915 2.61523C13.1053 2.61523 10.5771 3.38214 8.42672 4.81898C6.27634 6.25582 4.60032 8.29805 3.61061 10.6874C2.6209 13.0768 2.36195 15.706 2.8665 18.2426C3.37105 20.7791 4.61644 23.1091 6.44519 24.9378C8.27394 26.7666 10.6039 28.012 13.1405 28.5165C15.677 29.0211 18.3062 28.7621 20.6956 27.7724C23.0849 26.7827 25.1272 25.1067 26.564 22.9563C28.0009 20.8059 28.7678 18.2777 28.7678 15.6915C28.7678 13.9743 28.4295 12.2739 27.7724 10.6874C27.1153 9.10094 26.1521 7.65943 24.9378 6.44518C23.7236 5.23094 22.2821 4.26775 20.6956 3.61061C19.1091 2.95346 17.4087 2.61523 15.6915 2.61523ZM15.6915 26.1525C13.6225 26.1525 11.6 25.539 9.87968 24.3895C8.15937 23.24 6.81856 21.6063 6.02679 19.6948C5.23502 17.7833 5.02786 15.6799 5.4315 13.6507C5.83514 11.6214 6.83145 9.75745 8.29445 8.29445C9.75745 6.83145 11.6214 5.83513 13.6507 5.43149C15.6799 5.02785 17.7833 5.23502 19.6948 6.02678C21.6063 6.81855 23.24 8.15937 24.3895 9.87967C25.539 11.6 26.1525 13.6225 26.1525 15.6915C26.1525 18.4659 25.0504 21.1267 23.0886 23.0886C21.1267 25.0504 18.4659 26.1525 15.6915 26.1525Z" fill="#CCCCCC" />
@@ -93,21 +126,8 @@ export default function Footer() {
                                 <path d="M23.4157 18.3067C23.0329 19.6384 22.2742 20.8315 21.2305 21.7429C20.1869 22.6544 18.9025 23.2456 17.5314 23.4456C16.4592 23.6012 15.3666 23.5385 14.3192 23.2613C13.2718 22.9841 12.2912 22.4981 11.4364 21.8325C10.5815 21.1669 9.86989 20.3354 9.34434 19.388C8.81878 18.4406 8.4901 17.3967 8.378 16.3191C8.29117 15.2372 8.42974 14.1491 8.78496 13.1235C9.14018 12.098 9.70431 11.1573 10.4417 10.3609C11.1791 9.56452 12.0737 8.9298 13.0689 8.49686C14.0642 8.06392 15.1384 7.84218 16.2238 7.84565C17.2408 7.84709 18.2482 8.04236 19.1921 8.42101C19.3407 8.48774 19.5089 8.49657 19.6637 8.44577C19.8185 8.39498 19.9487 8.28822 20.029 8.14641L21.9119 4.6812C21.9525 4.60138 21.9768 4.51435 21.9837 4.42509C21.9905 4.33584 21.9796 4.24611 21.9517 4.16107C21.9237 4.07603 21.8792 3.99734 21.8208 3.92952C21.7624 3.8617 21.6912 3.80608 21.6112 3.76586C19.5892 2.85041 17.3675 2.4647 15.1553 2.64505C12.9431 2.82541 10.8132 3.5659 8.96624 4.79678C7.11927 6.02766 5.616 7.70842 4.59802 9.68075C3.58005 11.6531 3.08087 13.8521 3.1475 16.0706C3.27636 19.3657 4.63083 22.494 6.9456 24.8426C9.26036 27.1912 12.3686 28.591 15.6615 28.7677C19.1109 28.9206 22.4808 27.7031 25.0359 25.3807C27.591 23.0584 29.1239 19.8197 29.3 16.3714C29.3 16.1099 29.3 14.6061 29.3 13.7561C29.2967 13.5838 29.2267 13.4194 29.1048 13.2975C28.9829 13.1756 28.8186 13.1057 28.6462 13.1023H16.8776C16.7042 13.1023 16.5379 13.1712 16.4153 13.2938C16.2926 13.4164 16.2238 13.5827 16.2238 13.7561V17.679C16.2238 17.8524 16.2926 18.0187 16.4153 18.1413C16.5379 18.2639 16.7042 18.3328 16.8776 18.3328H23.4157" fill="#CCCCCC" />
                             </svg>
                         </a>
-                    </div>
+                    </div> */}
                     <div id="to-release-notes">
-                        <Link to="/release-notes" className="font-mont text-cc fw-600 fsxl-l20">APIdirect release notes</Link>
-                    </div>
-                </div>
-                <div className="container justify-content-between s-only">
-                    <div style={{ width: "239px" }}>
-                        <Link to='/'>
-                            <img
-                                src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/api-direct-v2-1/api-direct-logo.png"
-                                alt="API Direct Logo"
-                            />
-                        </Link>
-                    </div>
-                    <div>
                         <Link to="/release-notes" className="font-mont text-cc fw-600 fsxl-l20">APIdirect release notes</Link>
                     </div>
                 </div>

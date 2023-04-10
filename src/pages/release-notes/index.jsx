@@ -7,9 +7,9 @@ export default function ReleaseNotes() {
     const executeScroll = () => scrollRef.current.scrollIntoView();
 
     useEffect(() => {
-      executeScroll();
+        executeScroll();
     }, [])
-    
+
 
     return (
         <main id="release-notes" ref={scrollRef}>
@@ -43,20 +43,41 @@ export default function ReleaseNotes() {
                                 Improvements
                             </h6>
                             <ul className="rel-list">
-                                <li> New Improved User Experience </li>
-                                <li> New Associated Filters </li>
-                                <li> Added the "free" tag </li>
-                                <li> Feature Improvements </li>
-                                <li> New Redesigned Splash Screen </li>
-                                <li> Improved Layout </li>
-                                <li> UI/UX Fixes </li>
+                                <li> Enhanced the interface to provide a smoother user experience. </li>
+                                <li> Added over 10 new API listings. </li>
+                                <li> Implemented new tags, including the “free” tag. </li>
+                                <li> Integrated new data points, including the
+                                    number of endpoints and production instances.</li>
+                                <li> New, redesigned splash screen. </li>
+                                <li> Overhauled the filter menu. </li>
+                                <li> Updated the technical information on select
+                                    cards. </li>
+                            </ul>
+                        </div>
+                        <div className="rel-detail">
+                            <h2 className="fsxl40 fw-600">
+                                Version 2.0
+                            </h2>
+                            <p className="font-lucida fsxl-l20">
+                                18 January 2023
+                            </p>
+                            <h6 className="fsxl-l20 fw-600">
+                                Improvements
+                            </h6>
+                            <ul className="rel-list">
+                                <li> Redesigned for improved look, feel and intuitiveness. </li>
+                                <li> Added 10 new API listings. </li>
+                                <li> Embedded API documentation into each API card.</li>
+                                <li> Toggle between a Grid or List view for user preference in browsing API library. </li>
+                                <li> Click through to a dedicated page for each API card, containing all available endpoints, triggers and actions.</li>
+                                <li> Ability to filter API cards by tags eg. Hospitals, EHR. </li>
+                                <li> Recoded to React and a new Code Repo for improved product life cyle and content management. </li>
                                 <li> Redesigned Filter Menu </li>
                                 <li> Navigation Menu Updated </li>
                                 <li> New Tags </li>
                                 <li> Technical Info on Cards Updated
                                     & New APIs </li>
                             </ul>
-                            
                         </div>
                     </div>
 

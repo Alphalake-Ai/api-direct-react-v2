@@ -5,12 +5,13 @@ import "./style.css";
 
 import axios from 'axios';
 import { baseUrl } from '../../config/constants';
-import { FilterIcon, SearchIcon } from '../../components/Icons';
+import { FilterIcon, ResetIcon, SearchIcon } from '../../components/Icons';
 import {  AppIcon, GridIcon,  ListIcon, NationalSystemIcon, PatientsIcon, SecondaryCareIcon } from '../../components/TextTags';
 import { EhrIcon, HospitalIcon, CliniciansIcon } from '../../components/TextTags';
 // import { Australia, Europe, India, Italy, UK, USA } from '../../components/Flags';
 import ToggleSwitch from '../../components/ToggleSwitch';
 import ApiCard from './api-card';
+import { tagFilters } from './tag-filtes';
 const tags = [
     { title: "EHR", tag: "EHR", icon: <EhrIcon /> },
     { title: "Hospital", tag: "Hospital", icon: <HospitalIcon /> },
@@ -20,6 +21,8 @@ const tags = [
     { title: "App", tag: "App", icon: <AppIcon /> },
     { title: "Secondary Care", tag: "SecondaryCare", icon: <SecondaryCareIcon /> }
 ]
+
+
 
 function matchAtleastOne(arr1 = [], arr2 = []) {
     for (let index = 0; index < arr1.length; index++) {
@@ -43,6 +46,13 @@ export default function Main() {
     const [formats, setFormats] = useState([]);
     const [accessFilters, setAccessFilters] = useState({ partner: false, full: false, sandbox: false });
     const [singleFilters, setSingleFilters] = useState({ free: false, fhir: false, subscription: false });
+
+    function masterReset () {
+        setSelectedTags([]);
+        setFormats([]);
+        setAccessFilters({ partner: false, full: false, sandbox: false });
+        setSingleFilters({ free: false, fhir: false, subscription: false });
+    }
 
     async function onSearchFormSubmit(e) {
         e?.preventDefault();
@@ -83,7 +93,8 @@ export default function Main() {
         resetFilters();
     }
 
-    function onTagClick(tag) {
+    function onTagClick({ target }) {
+        const tag = target.value;
         if (selectedTags.includes(tag)) {
             setSelectedTags(prev => prev.filter(t => t !== tag))
         } else {
@@ -126,6 +137,7 @@ export default function Main() {
 
     const scrollRef = useRef();
     const executeScroll = () => scrollRef.current.scrollIntoView();
+    // const executeScroll = () => {};
 
     const [dimensions, setDimensions] = useState({
         height: window.innerHeight,
@@ -170,7 +182,15 @@ export default function Main() {
         }
     }
 
-    
+    function onSelectAll (index) {
+        setSelectedTags(prev => [...prev, ...tagFilters[index].tags.map(t => t.og)])
+    }
+
+    function onReset(index) {
+        let toRemove = tagFilters[index].tags.map(t => t.og);
+        setSelectedTags(prev => prev.filter(p => !toRemove.includes(p)));
+    }
+
     return (
         <>
             <section className="cdh center library-hero" ref={scrollRef}>
@@ -237,44 +257,69 @@ export default function Main() {
                         <div id="collapseFilterMenu" className="accordion-collapse collapse show" 
                             aria-labelledby="headingOne" data-bs-parent="#accordionExample"
                         >
-                            <div className="accordion-body py-3 px-0">
-                                <div>
-                                    <h4 className="fw-600 font-mont text-cc fsxl-m16">Filter by tag: </h4>
-                                    <div className="d-flex tag-box flex-wrap">
+                            <div className="accordion-body">
+                                <div className='pt-4 pb-2 d-flex justify-content-between'>
+                                    <span className="fsxl32 fw-600 text-white font-mont">
+                                        Filters:
+                                    </span>
+                                    <button className='t-btn text-white mater-reset' onClick={masterReset}> <ResetIcon/> Reset all</button>
+                                </div>
+                                <div className='justify-content-between d-flex flex-wrap py-3 px-0'>
+                                    <div className='col-lg-6 col-sm-12 col-12'>
+                                        <h4 className="fw-600 font-mont text-primary-1 fsxl-m16">Filter by tag: </h4>
                                         {
-                                            tags.map((t, i) => <div key={i} className={`search-tag ${selectedTags.includes(t.tag) ? 'active' : ''}`}
-                                                onClick={() => onTagClick(t.tag)}>
-                                                {t.icon} <span>{t.title}</span>
+                                            tagFilters.map((tf, i) => <div key={i}>
+                                                <div className="d-flex pb-3 align-items-center justify-content-between">
+                                                    <h5 className="fsxl-m14 mb-0 text-primary-3">{tf.title}:</h5>
+                                                    <div>
+                                                        <button onClick={() => onSelectAll(i)} className='filter-tag-btn'>Select All</button>
+                                                        <button onClick={() => onReset(i)} className='filter-tag-btn'>Reset</button>
+                                                    </div>
+                                                </div>
+                                                <div className="d-flex flex-wrap gap-10px pb-3">
+                                                    {
+                                                        tf.tags.map((tag, idx) => <span key={idx} className="filter-tag-sp">
+                                                            <input onChange={onTagClick} checked={selectedTags.includes(tag.og)}
+                                                                className="filter-tag-ip" id={tag.show} type="checkbox" name={tag.og} 
+                                                                value={tag.og}
+                                                            />
+                                                            <label className='filter-tag-ch fsxl-m14' htmlFor={tag.show} >
+                                                                {tag.show}
+                                                            </label>
+                                                        </span>
+                                                        )
+                                                    }
+                                                </div>
                                             </div>)
                                         }
                                     </div>
-                                </div>
-                                <div className="filter-hold">
-                                    <div id='region-filter'>
-                                        <h4 className="fw-600 font-mont text-cc fsxl-m16">Format: </h4>
-                                        <FormatSelector setSelected={setFormats} selected={formats} />
-                                    </div>
-                                    <div id='access-filter'>
-                                        <h4 className="fw-600 font-mont text-cc fsxl-m16">Integration Access: </h4>
-                                        <AccessSelector setSelected={setAccessFilters} selected={accessFilters} />
-                                    </div>
-                                    <div id='fhir-filter'>
-                                        <h4 className="fw-600 font-mont text-cc fsxl-m16">FHIR: </h4>
-                                        <div className="d-flex gap-3">
-                                            <ToggleSwitch logo='https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/FHIR_LOGO_1702.png'
-                                                name="fhir" onChange={onSingleFilterChange} checked={singleFilters.fhir}
-                                            />
+                                    <div className="filter-hold col-lg-6 col-xl-5 col-sm-12 col-12">
+                                        <div id='region-filter' className='pt-3'>
+                                            <h4 className="fw-600 font-mont text-primary-2 fsxl-m16">Format: </h4>
+                                            <FormatSelector setSelected={setFormats} selected={formats} />
                                         </div>
-                                    </div>
-                                    <div id='price-filter'>
-                                        <h4 className="fw-600 font-mont text-cc fsxl-m16">Data: </h4>
-                                        <div className="d-flex gap-3">
-                                            <ToggleSwitch label='Free' checked={singleFilters.free}
-                                                name="free" onChange={onSingleFilterChange}
-                                            />
-                                            <ToggleSwitch label='Subscription apply' checked={singleFilters.subscription}
-                                                name="subscription" onChange={onSingleFilterChange}
-                                            />
+                                        <div id='access-filter' className='pt-3'>
+                                            <h4 className="fw-600 font-mont text-primary-2 fsxl-m16">Integration Access: </h4>
+                                            <AccessSelector setSelected={setAccessFilters} selected={accessFilters} />
+                                        </div>
+                                        <div id='fhir-filter' className='pt-3'>
+                                            <h4 className="fw-600 font-mont text-primary-2 fsxl-m16">FHIR: </h4>
+                                            <div className="d-flex gap-3">
+                                                <ToggleSwitch logo='https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/FHIR_LOGO_1702.png'
+                                                    name="fhir" onChange={onSingleFilterChange} checked={singleFilters.fhir}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div id='price-filter' className='pt-3'>
+                                            <h4 className="fw-600 font-mont text-primary-2 fsxl-m16">Data: </h4>
+                                            <div className="d-flex gap-3">
+                                                <ToggleSwitch label='Free' checked={singleFilters.free}
+                                                    name="free" onChange={onSingleFilterChange}
+                                                />
+                                                <ToggleSwitch label='Subscription apply' checked={singleFilters.subscription}
+                                                    name="subscription" onChange={onSingleFilterChange}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
