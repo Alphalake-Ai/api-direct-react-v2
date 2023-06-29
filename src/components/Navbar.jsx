@@ -29,7 +29,7 @@ export default function Navbar() {
 
     return (
         <nav id="main-nav">
-            <div className="align-items-center d-flex">
+            <div className="align-items-center d-flex container">
                 <div className="logo" style={{ cursor: 'pointer' }} onClick={() => navigate("/")}>
                     <img
                         src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/api-direct-v2-1/api-direct-logo.png"

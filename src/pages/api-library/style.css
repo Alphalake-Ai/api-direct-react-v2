@@ -65,6 +65,7 @@ div.like-form .form-hold input{
 #search-box {
     width: 100%;
     border-radius: 5px;
+    position: relative;
     display: flex;
     align-items: center;
     column-gap: 0.5rem;
@@ -82,6 +83,35 @@ div.like-form .form-hold input{
 }
 #search-box input::placeholder {
     color: rgba(13, 155, 156, 0.5);
+}
+#search-box #search-list {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 40px;
+    left: 0;
+    color: #fff;
+    border-radius: 5px;
+    z-index: 2;
+    background-color: rgba(0, 26, 33, 1);
+}
+#search-box:focus-within #search-list {
+    display: block;
+}
+#search-list .n-it a {
+    font-family: var(--font-mont);
+}
+#search-list .n-it a > div {
+    padding-left: 0.5rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-radius: 5px;
+}
+#search-list .n-it a span.pu {
+    font-size: x-small;
+}
+#search-list .n-it a > div:hover {
+    background-color: #078181;
 }
 
 .tag-box {
@@ -211,8 +241,8 @@ span.filter-tag-sp {
 label.filter-tag-ch {
     border: 1px solid #fff;
     color: #fff;
-    /* font-size: 14px; */
-    /* line-height: 18px; */
+    font-size: 14px;
+    line-height: 21px;
     padding: 5px 12px;
     border-radius: 5px;
     cursor: pointer;
@@ -226,8 +256,10 @@ input.filter-tag-ip:checked + label.filter-tag-ch {
     border-color: #0D9B9C;
     color: #0D9B9C;
 }
-
-
+input.filter-tag-ip:checked+label.filter-tag-ch {
+    background-color: #059B9A26;
+    font-weight: 500;
+}
 .cards.grid {
     column-gap: 1%;
     row-gap: 0.8rem;
@@ -240,14 +272,18 @@ input.filter-tag-ip:checked + label.filter-tag-ch {
 .cards.grid .card {
     width: max(42%, 388px);
     height: 520px;
-    padding: 1rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
 }
 
-@media (width > 992px) {
+@media (width > 1025px) {
+    .cards.grid {
+        column-gap: 10px;
+        row-gap: 10px;
+    }
     .cards.grid .card {
-        width: 32%;
+        width: 388px;
     }
 }
 
@@ -398,4 +434,12 @@ input.filter-tag-ip:checked + label.filter-tag-ch {
 }
 .cards .card:hover {
     background-color: var(--primary-3-25);
+}
+
+
+#filter-button.collapsed #cross-icon {
+    display: none;
+}
+#filter-button[aria-expanded="true"] #filter-icon {
+    display: none;
 }

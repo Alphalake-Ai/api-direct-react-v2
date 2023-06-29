@@ -5,23 +5,14 @@ import "./style.css";
 
 import axios from 'axios';
 import { baseUrl } from '../../config/constants';
-import { FilterIcon, ResetIcon, SearchIcon } from '../../components/Icons';
-import {  AppIcon, GridIcon,  ListIcon, NationalSystemIcon, PatientsIcon, SecondaryCareIcon } from '../../components/TextTags';
-import { EhrIcon, HospitalIcon, CliniciansIcon } from '../../components/TextTags';
-// import { Australia, Europe, India, Italy, UK, USA } from '../../components/Flags';
+import { CrossIcon, FilterIcon, LoaderIcon, ResetIcon, SearchIcon } from '../../components/Icons';
+import {  GridIcon,  ListIcon } from '../../components/TextTags';
 import ToggleSwitch from '../../components/ToggleSwitch';
 import ApiCard from './api-card';
 import { tagFilters } from './tag-filtes';
-const tags = [
-    { title: "EHR", tag: "EHR", icon: <EhrIcon /> },
-    { title: "Hospital", tag: "Hospital", icon: <HospitalIcon /> },
-    { title: "Clinicians", tag: "Clinician", icon: <CliniciansIcon /> },
-    { title: "National System", tag: "NATIONAL SYSTEM", icon: <NationalSystemIcon /> },
-    { title: "Patient", tag: "Patient", icon: <PatientsIcon /> },
-    { title: "App", tag: "App", icon: <AppIcon /> },
-    { title: "Secondary Care", tag: "SecondaryCare", icon: <SecondaryCareIcon /> }
-]
 
+import useDelayedSearch from '../../hooks/useDelayedSearch';
+import useLoadCards from '../../hooks/useLoadCards';
 
 
 function matchAtleastOne(arr1 = [], arr2 = []) {
@@ -40,12 +31,13 @@ export default function Main() {
     const [selectedTags, setSelectedTags] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [listView, setListView] = useState(false);
-    const [allCards, setAllCards] = useState([]);
     const [cards, setCards] = useState([]);
 
     const [formats, setFormats] = useState([]);
     const [accessFilters, setAccessFilters] = useState({ partner: false, full: false, sandbox: false });
     const [singleFilters, setSingleFilters] = useState({ free: false, fhir: false, subscription: false });
+
+    const filterToggleRef = useRef();
 
     function masterReset () {
         setSelectedTags([]);
@@ -54,60 +46,13 @@ export default function Main() {
         setSingleFilters({ free: false, fhir: false, subscription: false });
     }
 
-    async function onSearchFormSubmit(e) {
-        e?.preventDefault();
-        try {
-            const { data } = await axios.get(baseUrl + `/api-cards?q=${searchQuery}&tags=${selectedTags.join(",")}`);
-            setAllCards(data.data);
-            backup = data.data;
-            setCards(data.data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    function resetFilters () {
-        setSingleFilters({ free: false, fhir: false });
-        setAccessFilters({ partner: false, full: false, sandbox: false });
-        setFormats([]);
-        setSelectedTags([]);
-    }
-
-    useEffect(() => { onSearchFormSubmit(); executeScroll(); }, []);
-
+    const nextLoadRef = useRef();
+    const [tiles, totalTiles] = useLoadCards(nextLoadRef);
     useEffect(() => {
-        if (searchQuery) {
-            let regex = new RegExp(searchQuery, 'i');
-            let temp = allCards.filter(c => regex.test(c.name));
-            setCards(temp);
-            backup = temp;
-        } else {
-            setCards(allCards);
-            backup = allCards;
-        }
-        // onSearchFormSubmit();
-    }, [searchQuery])
-
-    function onSearchQueryChange(e) {
-        setSearchQuery(e.target.value);
-        resetFilters();
-    }
-
-    function onTagClick({ target }) {
-        const tag = target.value;
-        if (selectedTags.includes(tag)) {
-            setSelectedTags(prev => prev.filter(t => t !== tag))
-        } else {
-            setSelectedTags(prev => [...prev, tag])
-        }
-    }
-
-    function onSingleFilterChange ({target}) {
-        const { name, checked } = target;
-        setSingleFilters(prev => ({...prev, [name]: checked}))
-    } 
-
+        backup = [...backup, ...tiles];
+    }, [tiles])
     useEffect(() => {
+
         let tempHold = backup;
         if (selectedTags.length) {
             tempHold = tempHold.filter(c => matchAtleastOne(c.textTags, selectedTags));
@@ -133,11 +78,33 @@ export default function Main() {
             tempHold = tempHold.filter(c => c.subscription);
         }
         setCards(tempHold);
-    }, [selectedTags, formats, accessFilters, singleFilters])
+
+    }, [tiles, selectedTags, formats, accessFilters, singleFilters]);
+
+    // useEffect(() => { console.log(cards.length);} ,[cards])
+    useEffect(() => { executeScroll(); filterToggleRef.current.click(); console.log("Initial Effect"); }, []);
+
+    const [searchData, searchLoading] = useDelayedSearch(searchQuery);
+    function onSearchQueryChange(e) {
+        setSearchQuery(e.target.value);
+    }
+
+    function onTagClick({ target }) {
+        const tag = target.value;
+        if (selectedTags.includes(tag)) {
+            setSelectedTags(prev => prev.filter(t => t !== tag))
+        } else {
+            setSelectedTags(prev => [...prev, tag])
+        }
+    }
+
+    function onSingleFilterChange ({target}) {
+        const { name, checked } = target;
+        setSingleFilters(prev => ({...prev, [name]: checked}))
+    } 
 
     const scrollRef = useRef();
     const executeScroll = () => scrollRef.current.scrollIntoView();
-    // const executeScroll = () => {};
 
     const [dimensions, setDimensions] = useState({
         height: window.innerHeight,
@@ -157,25 +124,20 @@ export default function Main() {
             window.removeEventListener('resize', handleResize);
         }
     });
-
     useEffect(() => {
         if (dimensions.width < 768) {
             setListView(false)
         }
     }, [dimensions]);
 
-    const [infoForm, setInfoForm] = useState({ email: "", name: "" });
-    function onInfoFormChange({ target }) {
-        const { name, value } = target;
-        setInfoForm(prev => ({ ...prev, [name]: value }))
-    }
-
     async function onInfoFormSubmit(e) {
         try {
             e.preventDefault();
-            await axios.post(baseUrl + '/info', infoForm);
+            const form = new FormData(e.target);
+            const data = Object.fromEntries(form.entries());
+            await axios.post(baseUrl + '/info', data);
             alert("Thanks for the help. We'll contact you soon.");
-            setInfoForm({ name: "", email: "" });
+            e.target.reset();
         } catch (error) {
             console.log(error);
             alert("Oops! An error occured. Please try again after sometime.");
@@ -221,10 +183,10 @@ export default function Main() {
                         </div>
                         <form className='form-hold' onSubmit={onInfoFormSubmit}>
                             <input type="text" required name="name" className='fsxl-l14 font-mont input-field  px-3' placeholder='Forename Surname'
-                                value={infoForm.name} onChange={onInfoFormChange} 
+                                
                             />
                             <input type="email" required name="email" className='fsxl-l14 font-mont input-field  px-3' placeholder='Work Email'
-                                value={infoForm.email} onChange={onInfoFormChange}
+                                
                             />
                             <input type="submit" value="Submit" className='submit-btn font-mont fw-600 ' />
                         </form>
@@ -235,17 +197,29 @@ export default function Main() {
                 <div className="accordion" id='filter-accordion'>
                     <div className="accordion-item">
                         <div className='d-flex gap-3'>
-                            <button className="accordion-button" id='filter-button' type="button" data-bs-toggle="collapse" 
-                                data-bs-target="#collapseFilterMenu" aria-expanded="true" aria-controls="collapseFilterMenu"
+                            <button ref={filterToggleRef} className="accordion-button collapsed" id='filter-button' type="button" data-bs-toggle="collapse" 
+                                data-bs-target="#collapseFilterMenu" aria-expanded="false" aria-controls="collapseFilterMenu"
                             >
-                                <FilterIcon />
+                                <CrossIcon/> <FilterIcon /> 
                                 <span className='font-mont text-cc fw-600 fsxl-l16'>Filter</span>
                             </button>
                             <div id='search-box'>
-                                <SearchIcon/>
+                                { searchLoading? <LoaderIcon/> : <SearchIcon/> }
                                 <input type="text" value={searchQuery} onChange={onSearchQueryChange} 
-                                    name="search" placeholder={`Search ${allCards.length} APIs`} 
+                                    name="search" placeholder={`Search ${totalTiles} APIs`} 
                                 />
+                                <div id='search-list'>
+                                    {
+                                        searchData.map((d, i) => <div className='n-it' key={d._id}>
+                                            <Link to={createSlug(d.name, d._id)} >
+                                                <div className='d-flex flex-column'>
+                                                <span className='ti'>{d.name}</span>
+                                                <span className='pu'>{d.publisher}</span>
+                                                </div>
+                                            </Link>
+                                        </div>)
+                                    }
+                                </div>
                             </div>
                             <button id='view-switch' onClick={() => setListView(prev => !prev)}>
                                 {listView ? <GridIcon /> : <ListIcon />}
@@ -254,7 +228,7 @@ export default function Main() {
                                 </span>
                             </button>
                         </div>
-                        <div id="collapseFilterMenu" className="accordion-collapse collapse show" 
+                        <div  id="collapseFilterMenu" className="accordion-collapse collapse"
                             aria-labelledby="headingOne" data-bs-parent="#accordionExample"
                         >
                             <div className="accordion-body">
@@ -283,7 +257,7 @@ export default function Main() {
                                                                 className="filter-tag-ip" id={tag.show} type="checkbox" name={tag.og} 
                                                                 value={tag.og}
                                                             />
-                                                            <label className='filter-tag-ch fsxl-m14' htmlFor={tag.show} >
+                                                            <label className='filter-tag-ch' htmlFor={tag.show} >
                                                                 {tag.show}
                                                             </label>
                                                         </span>
@@ -336,6 +310,7 @@ export default function Main() {
                     cards.map((c, i) => <ApiCard key={i} data={c} listView={listView} />)
                 }
             </section>
+            <div ref={nextLoadRef} className='py-2'></div>
             <section className="pt-4 pb-3 container">
                 <a href="http://sehta.co.uk" target="_blank" rel="noopener noreferrer">
                     <img width='100%' src="https://6637851.fs1.hubspotusercontent-na1.net/hubfs/6637851/Api%20Direct%20Version%202%20Resources/Image/sehtafooter.png" alt="sehta-ad" />
@@ -345,51 +320,10 @@ export default function Main() {
     )
 }
 
+function createSlug(title, id) {
+    return title.trim().toLowerCase().replace(/\s+/g, '-')+'@'+id;
+}
 
-// function RegionSelector({ setSelected }) {
-//     function handleSelectChange ({target}) {
-//         const { value, checked } = target;
-//         if(checked) {
-//             setSelected(prev => [...prev, value]);
-//         } else {
-//             setSelected(prev => prev.filter(r => r !== value))
-//         }
-//     }
-
-//     return (    
-//         <div className="d-flex tag-box">
-//             <label className="reg-f">
-//                 <input type="checkbox" name="rf" value="UK" onChange={handleSelectChange} />
-//                 <UK />
-//             </label>
-
-//             <label className="reg-f">
-//                 <input type="checkbox" name="rf" value="EUROPE" onChange={handleSelectChange} />
-//                 <Europe />
-//             </label>
-
-//             <label className="reg-f">
-//                 <input type="checkbox" name="rf" value="USA" onChange={handleSelectChange} />
-//                 <USA />
-//             </label>
-
-//             <label className="reg-f">
-//                 <input type="checkbox" name="rf" value="ITALY" onChange={handleSelectChange} />
-//                 <Italy />
-//             </label>
-
-//             <label className="reg-f">
-//                 <input type="checkbox" name="rf" value="AUSTRALIA" onChange={handleSelectChange} />
-//                 <Australia />
-//             </label>
-
-//             <label className="reg-f">
-//                 <input type="checkbox" name="rf" value="INDIA" onChange={handleSelectChange} />
-//                 <India />
-//             </label>
-//         </div>
-//     )
-// }
 
 function FormatSelector({ setSelected, selected = [] }) {
 

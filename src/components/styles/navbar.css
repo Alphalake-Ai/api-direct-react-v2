@@ -3,7 +3,7 @@ nav#main-nav {
     position: sticky;
     background: #000B0E;
     top: 0;
-    z-index: 2;
+    z-index: 4;
     align-items: center;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -42,11 +42,11 @@ nav#main-nav {
     
 }
 
-@media (width > 768px) {
+/* @media (width > 768px) {
     #main-nav .logo {
         margin-left: 4rem;
     }
-}
+} */
 
 .sidepanel {
     width: 0;

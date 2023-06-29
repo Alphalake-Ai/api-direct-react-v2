@@ -3,7 +3,7 @@
   "name": "Alphalake API Direct",
   "icons": [
     {
-      "src": "https://www.alphalake.ai/hubfs/Alphalake_Ai-April-2020/Images/Favicon.png",
+      "src": "./images/api-direct-favicon.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },

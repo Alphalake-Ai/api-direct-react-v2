@@ -336,10 +336,12 @@ input.input-field {
 }
 input.input-field::placeholder,
 input.input-field:focus::placeholder {
-    color: #ccc;
+    color: #fff;
 }
 input.input-field:focus {
-    border: 3px solid var(--primary-3-25);
+    border: 3px solid #059B9A;
+    color: #fff;
+    font-weight: 600;
 }
 .submit-btn {
     background-color: transparent;
@@ -356,7 +358,11 @@ input.input-field:focus {
 .m-fit-content {
     min-width: fit-content;
 }
-
+@media (width> 1399px) {
+    .container {
+        max-width: 1210px;
+    }
+}
 @media (1025px < width < 1399px) {
     .fsxl96 {
         font-size: 64px;
@@ -521,5 +527,22 @@ input.input-field:focus {
 @media (width < 768px) {
     .s-flex-column {
         flex-direction: column;
+    }
+}
+
+
+div.loader {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border-top: 2px solid var(--primary-1);
+    animation: rotating 1s infinite;
+}
+@keyframes rotating {
+    from {
+        rotate: 0;
+    }
+    to {
+        rotate: 360deg;
     }
 }

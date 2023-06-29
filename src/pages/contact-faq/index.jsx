@@ -6,18 +6,14 @@ import { baseUrl } from "../../config/constants";
 const defaultContactForm = { name: "", email: "", subject: "", message: "" };
 export default function ContactFaq() {
 
-  const [formData, setFormData] = useState(defaultContactForm)
-  function onFormDataChange({ target }) {
-    const { name, value } = target;
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
-
   async function onContactFormSubmit(e) {
     e.preventDefault();
+    const form = new FormData(e.target);
+    const data = Object.fromEntries(form.entries());
     try {
-      await axios.post(baseUrl + "/contact", formData);
+      await axios.post(baseUrl + "/contact", data);
       alert("Query registered. We'll contact you soon.");
-      setFormData(defaultContactForm);
+      e.target.reset();
     } catch (error) {
       console.log(error);
       alert("Oops! An error occured. Please try again after sometime.");
@@ -25,7 +21,7 @@ export default function ContactFaq() {
   }
 
   return <>
-    <div className="contact-box">
+    <div className="contact-box container">
       <h1 className="whi-col fnt-45">Get in touch</h1>
       <div className="flexbox">
         <div className='lhs whi-col'>
@@ -40,15 +36,15 @@ export default function ContactFaq() {
               <form id="libary_con_form" onSubmit={onContactFormSubmit}>
                 <div class="name">
                   <label for="name">Name</label>
-                  <input onChange={onFormDataChange} type="text" value={formData.name} placeholder="My name is" name="name" id="name_input" required />
+                  <input type="text" placeholder="My name is" name="name" id="name_input" required />
                 </div>
                 <div class="email">
                   <label for="email">Email</label>
-                  <input onChange={onFormDataChange} type="email" value={formData.email} placeholder="My e-mail is" name="email" id="email_input" required />
+                  <input type="email"  placeholder="My e-mail is" name="email" id="email_input" required />
                 </div>
                 <div class="subject">
                   <label for="subject"></label>
-                  <select onChange={onFormDataChange} placeholder="Subject line" value={formData.subject} name="subject" id="subject_input">
+                  <select placeholder="Subject line" name="subject" id="subject_input">
                     <option value="" disabled>Select</option>
                     <option value="START A PROJECT">I'd like to start a project</option>
                     <option value="ASK A QUESTION">I'd like to ask a question</option>
@@ -57,7 +53,7 @@ export default function ContactFaq() {
                 </div>
                 <div class="message">
                   <label for="message">Message</label>
-                  <textarea onChange={onFormDataChange} name="message" value={formData.message} required placeholder="I'd like to chat about" id="message_input" cols="30"
+                  <textarea name="message" required placeholder="I'd like to chat about" id="message_input" cols="30"
                     rows="3"></textarea>
                 </div>
                 <div class="submit">
